@@ -10,9 +10,13 @@ from Crypto.Hash import SHAKE128
 st.markdown(
     """
     <style>
-    /* Import Times New Roman (system font fallback) */
-    html, body, [class*="css"]  {
-        font-family: Georgia, "Times New Roman", serif;
+    /* Override Streamlit base font */
+    :root {
+        --font-family: "Times New Roman", Times, serif;
+    }
+
+    html, body, [data-testid="stAppViewContainer"] * {
+        font-family: "Times New Roman", Times, serif !important;
     }
     </style>
     """,
