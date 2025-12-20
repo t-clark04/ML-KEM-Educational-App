@@ -12,11 +12,11 @@ st.markdown(
     <style>
     /* Override Streamlit base font */
     :root {
-        --font-family: "Times New Roman", Times, serif;
+        --font-family: "Libre Baskerville", serif;
     }
 
     html, body, [data-testid="stAppViewContainer"] * {
-        font-family: "Times New Roman", Times, serif !important;
+        font-family: "Libre Baskerville", serif !important;
     }
     </style>
     """,
