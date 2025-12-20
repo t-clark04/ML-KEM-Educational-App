@@ -990,7 +990,7 @@ def keygen_step_3(params, full_output):
         f"ê:\n[{e_hat_coeffs_str}]"
         )
 
-def keygen_step_4(params):
+def keygen_step_4(params, full_output):
     k = params['k']
     A_hat = st.session_state.A_hat
     A_hat_coeffs = []
@@ -1009,8 +1009,26 @@ def keygen_step_4(params):
         A_hat_coeffs_str += "],\n"
     A_hat_coeffs_str = A_hat_coeffs_str[:-2]
     A_hat_coeffs_str += "]"
+
+    A_hat_str = ""
+    for i in range(k):
+        A_hat_str = A_hat_str + "["
+        for j in range(k):
+            A_hat_str = A_hat_str + "["
+            for l in range(0, 256, 32):
+                line = ", ".join(str(x) for x in A_hat[i,j][l:l+32])
+                A_hat_str += line + ",\n"
+            A_hat_str += line + "],\n"
+        A_hat_str += line + "],\n\n"
+        A_hat_str = A_hat_str[:-2]
+    A_hat_str = A_hat_str[:-2]
     
-    return f"Â:{A_hat_coeffs_str}"
+    if full_output == True:
+        return(f"Â:\n[{A_hat_str}]\n\n")
+    
+    elif full_output == False:
+        return (
+        f"Â:{A_hat_coeffs_str}")
 
 def keygen_step_5(params, full_output):
     k = params['k']
