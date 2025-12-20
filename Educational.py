@@ -1020,7 +1020,7 @@ def keygen_step_4(params, full_output):
                 A_hat_str += line + ",\n"
             A_hat_str = A_hat_str[:-2]
             A_hat_str += "],\n"
-        A_hat_str += line + "],\n\n"
+        A_hat_str += "],\n\n"
         A_hat_str = A_hat_str[:-2]
     A_hat_str = A_hat_str[:-2]
     
