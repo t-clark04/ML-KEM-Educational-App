@@ -140,7 +140,7 @@ def ByteDecode(B, d):
         m = 2**d
     elif d == 12:
         m = 3329
-    F = np.zeros(256, dtype = int)
+    F = np.zeros(256, dtype = np.uint32)
     b = BytesToBits(B)
     for i in range(0,256):
         summation = 0 
