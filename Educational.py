@@ -12,11 +12,10 @@ st.markdown(
     <style>
     /* Override Streamlit base font */
     :root {
-        --font-family: Charter, "Bitstream Charter", serif;
-    }
+        --font-family: "Source Sans 3", sans-serif;
 
     html, body, [data-testid="stAppViewContainer"] * {
-        font-family: Charter, "Bitstream Charter", serif !important;
+        font-family: "Source Sans 3", sans-serif !important;
     }
     </style>
     """,
