@@ -186,7 +186,7 @@ def SampleNTT(B):
 # This function, therefore, takes a seed and outputs a pseudorandom sample from said 
 # distribution.
 def SamplePolyCBD(B, eta):
-    f = np.zeros(256, dtype = int)
+    f = np.zeros(256, dtype = np.int32)
     b = BytesToBits(B)
     for i in range(0, 256):
         summation_x = 0
