@@ -1018,7 +1018,7 @@ def keygen_step_4(params, full_output):
             for l in range(0, 256, 32):
                 line = ", ".join(str(x) for x in A_hat[i,j][l:l+32])
                 A_hat_str += line + ",\n"
-            A_hat_str += line + "],\n"
+            A_hat_str += "],\n"
         A_hat_str += line + "],\n\n"
         A_hat_str = A_hat_str[:-2]
     A_hat_str = A_hat_str[:-2]
