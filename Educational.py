@@ -12,7 +12,7 @@ st.markdown(
     <style>
     /* Import Times New Roman (system font fallback) */
     html, body, [class*="css"]  {
-        font-family: "Times New Roman", Times, serif;
+        font-family: Georgia, "Times New Roman", serif;
     }
     </style>
     """,
