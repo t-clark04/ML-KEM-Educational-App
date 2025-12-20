@@ -1207,6 +1207,7 @@ def encaps_step_2(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in t_hat[i][j:j+32])
             t_hat_str += line + ",\n"
+        t_hat_str = t_hat_str[:-2]
         t_hat_str += "],\n"
     t_hat_str = t_hat_str[:-2]
     
