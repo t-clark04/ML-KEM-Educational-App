@@ -167,7 +167,7 @@ def SampleNTT(B):
     ctx = XOF.Init()
     ctx = XOF.Absorb(ctx, B)
     j = 0
-    a_hat = np.zeros(256, dtype = np.uint32)
+    a_hat = np.zeros(256, dtype = int)
     while j < 256:
         C = XOF.Squeeze(ctx,3)
         d_1 = C[0] + 256*(C[1] % 16)
@@ -186,8 +186,8 @@ def SampleNTT(B):
 # This function, therefore, takes a seed and outputs a pseudorandom sample from said 
 # distribution.
 def SamplePolyCBD(B, eta):
-    f = np.zeros(256, dtype = np.uint32)
-    b = BytesToBits(B)
+    f = np.zeros(256, dtype = int)
+    b = BytesToBits(B).astype(np.int16)
     for i in range(0, 256):
         summation_x = 0
         for j in range(0, eta):
