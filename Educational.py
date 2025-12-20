@@ -1030,7 +1030,8 @@ def keygen_step_4(params, full_output):
     
     elif full_output == False:
         return (
-        f"Â:{A_hat_coeffs_str}")
+        f"Â:{A_hat_coeffs_str}"
+        )
 
 def keygen_step_5(params, full_output):
     k = params['k']
@@ -1155,7 +1156,7 @@ def encaps_step_1(params):
     f"r: {r}"
     )
 
-def encaps_step_2(params):
+def encaps_step_2(params, full_output):
     k = params['k']
     A_hat = st.session_state.A_hat
     t_hat = st.session_state.t_hat
@@ -1168,7 +1169,7 @@ def encaps_step_2(params):
     for i in range(1,k):
         t_hat_coeffs_str += f",\n[{', '.join(t_hat_coeffs[i])},...]"
 
-        A_hat_coeffs = []
+    A_hat_coeffs = []
     for i in range(k):
         A_hat_row = []
         for j in range(k):
@@ -1185,10 +1186,41 @@ def encaps_step_2(params):
     A_hat_coeffs_str = A_hat_coeffs_str[:-2]
     A_hat_coeffs_str += "]"
 
-    return (
+    A_hat_str = ""
+    for i in range(k):
+        A_hat_str = A_hat_str + "["
+        for j in range(k):
+            A_hat_str = A_hat_str + "["
+            for l in range(0, 256, 32):
+                line = ", ".join(str(x) for x in A_hat[i,j][l:l+32])
+                A_hat_str += line + ",\n"
+            A_hat_str = A_hat_str[:-2]
+            A_hat_str += "],\n"
+        A_hat_str = A_hat_str[:-2]
+        A_hat_str += "],\n\n"
+    A_hat_str = A_hat_str[:-5]
+    A_hat_str += "]]"
+
+    t_hat_str = ""
+    for i in range(k):
+        t_hat_str = t_hat_str + "["
+        for j in range(0, 256, 32):
+            line = ", ".join(str(x) for x in t_hat[i][j:j+32])
+            t_hat_str += line + ",\n"
+        t_hat_str += line + "],\n"
+    t_hat_str = t_hat_str[:-2]
+    
+    if full_output == True:
+        return(
+            f"t\u0302:\n[{t_hat_str}]\n\n"
+            f"Â:\n[{A_hat_str}]\n\n"
+            )
+    
+    elif full_output == False:
+        return (
         f"t\u0302:\n[{t_hat_coeffs_str}]\n\n"
         f"Â:{A_hat_coeffs_str}"
-    )
+        )
 
 def encaps_step_3(params, full_output):
     k = params['k']
@@ -1971,7 +2003,7 @@ with tab2:
                 st.markdown(step_data['description'])
 
                 # Output / Action
-                if current_step_index in [2,3,4,5,6]:
+                if current_step_index in [1,2,3,4,5,6]:
                     full_output = st.toggle("Show full output", value = False)
                     if full_output:
                         output = step_data['action'](params, True)
