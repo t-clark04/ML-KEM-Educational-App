@@ -1213,7 +1213,7 @@ def encaps_step_2(params, full_output):
     
     if full_output == True:
         return(
-            f"t\u0302:\n[{t_hat_str}]\n\n"
+            f"t\u0302:\n[{t_hat_str}]\n\n\n"
             f"Â:\n[{A_hat_str}]\n\n"
             )
     
