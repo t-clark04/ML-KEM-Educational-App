@@ -909,7 +909,8 @@ def keygen_step_2(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in s[i][j:j+32])
             s_str += line + ",\n"
-        s_str += line + "],\n"
+        s_str = s_str[:-2]
+        s_str += "],\n"
     s_str = s_str[:-2]
 
     e_str = ""
@@ -918,7 +919,8 @@ def keygen_step_2(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in e[i][j:j+32])
             e_str += line + ",\n"
-        e_str += line + "],\n"
+        e_str = e_str[:-2]
+        e_str += "],\n"
     e_str = e_str[:-2]
 
     if full_output == True:
@@ -968,7 +970,8 @@ def keygen_step_3(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in s_hat[i][j:j+32])
             s_hat_str += line + ",\n"
-        s_hat_str += line + "],\n"
+        s_hat_str = s_hat_str[:-2]
+        s_hat_str += "],\n"
     s_hat_str = s_hat_str[:-2]
 
     e_hat_str = ""
@@ -977,7 +980,8 @@ def keygen_step_3(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in e_hat[i][j:j+32])
             e_hat_str += line + ",\n"
-        e_hat_str += line + "],\n"
+        e_hat_str = e_hat_str[:-2]
+        e_hat_str += "],\n"
     e_hat_str = e_hat_str[:-2]
 
     if full_output == True:
@@ -1067,7 +1071,8 @@ def keygen_step_5(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in t_hat[i][j:j+32])
             t_hat_str += line + ",\n"
-        t_hat_str += line + "],\n"
+        t_hat_str = t_hat_str[:-2]
+        t_hat_str += "],\n"
     t_hat_str = t_hat_str[:-2]
 
     if full_output == True:
@@ -1264,7 +1269,8 @@ def encaps_step_3(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in y[i][j:j+32])
             y_str += line + ",\n"
-        y_str += line + "],\n"
+        y_str = y_str[:-2]
+        y_str += "],\n"
     y_str = y_str[:-2]
 
     e_1_coeffs = []
@@ -1280,7 +1286,8 @@ def encaps_step_3(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in e_1[i][j:j+32])
             e_1_str += line + ",\n"
-        e_1_str += line + "],\n"
+        e_1_str = e_1_str[:-2]
+        e_1_str += "],\n"
     e_1_str = e_1_str[:-2]
 
     e_2_coeffs = [str(x) for x in e_2[:10]]
@@ -1306,7 +1313,8 @@ def encaps_step_3(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in y_hat[i][j:j+32])
             y_hat_str += line + ",\n"
-        y_hat_str += line + "],\n"
+        y_hat_str = y_hat_str[:-2]
+        y_hat_str += "],\n"
     y_hat_str = y_hat_str[:-2]
 
     if full_output == True:
@@ -1378,7 +1386,8 @@ def encaps_step_5(params, full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in u[i][j:j+32])
             u_str += line + ",\n"
-        u_str += line + "],\n"
+        u_str = u_str[:-2]
+        u_str += "],\n"
     u_str = u_str[:-2]
 
     if full_output == True:
@@ -1479,7 +1488,8 @@ def decaps_step_1(params,full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in u_prime[i][j:j+32])
             u_prime_str += line + ",\n"
-        u_prime_str += line + "],\n"
+        u_prime_str = u_prime_str[:-2]
+        u_prime_str += "],\n"
     u_prime_str = u_prime_str[:-2]
 
     if full_output == True:
@@ -1537,7 +1547,8 @@ def decaps_step_3(params,full_output):
         for j in range(0, 256, 32):
             line = ", ".join(str(x) for x in s_hat[i][j:j+32])
             s_hat_str += line + ",\n"
-        s_hat_str += line + "],\n"
+        s_hat_str = s_hat_str[:-2]
+        s_hat_str += "],\n"
     s_hat_str = s_hat_str[:-2]
 
     if full_output == True:
