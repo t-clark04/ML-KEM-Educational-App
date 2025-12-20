@@ -7,6 +7,18 @@ import secrets
 import hashlib
 from Crypto.Hash import SHAKE128
 
+st.markdown(
+    """
+    <style>
+    /* Import Times New Roman (system font fallback) */
+    html, body, [class*="css"]  {
+        font-family: "Times New Roman", Times, serif;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 def rounded(x):
     if abs(x % 1) == 0.5:
         return int(x + 0.5 if x > 0 else x - 0.5)
