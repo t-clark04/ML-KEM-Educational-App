@@ -1940,14 +1940,11 @@ with tab2:
                 st.markdown(step_data['description'])
 
                 # Output / Action
-                if current_step_index in [1,2,4,5,6]:
-                    full_output = st.toggle("Show full output", value = False)
-                    if full_output:
-                        output = step_data['action'](params, True)
-                    else:
-                        output = step_data['action'](params, False)
+                full_output = st.toggle("Show full output", value = False)
+                if full_output:
+                    output = step_data['action'](params, True)
                 else:
-                    output = step_data['action'](params)
+                    output = step_data['action'](params, False)
                 st.code(output, language='text')
 
                 if current_step_index == len(KEYGEN_STEPS) - 1:
