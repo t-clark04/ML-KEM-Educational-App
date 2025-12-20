@@ -7,19 +7,6 @@ import secrets
 import hashlib
 from Crypto.Hash import SHAKE128
 
-st.markdown(
-    """
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
-
-    [data-testid="stAppViewContainer"] * {
-        font-family: "Source Serif 4", serif !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 def rounded(x):
     if abs(x % 1) == 0.5:
         return int(x + 0.5 if x > 0 else x - 0.5)
