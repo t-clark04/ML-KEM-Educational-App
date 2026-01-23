@@ -266,7 +266,7 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
-st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the **ML-KEM** cryptosystem becoming the new standard for general encryption.")
+st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the *ML-KEM* cryptosystem becoming the new standard for general encryption.")
 st.markdown("###### **Why is it needed?**")
 st.markdown("""
             - Because the current encryption schemes in place around the globe were built to withstand attacks from *classical* computers, but the rise of *quantum* computers threatens to put the security of these cryptosystems at risk.
@@ -771,6 +771,18 @@ def generate_decaps_graph():
       html_string = f.read()
   return html_string
 
+st.markdown(
+    """
+    <style>
+    /* Increase tab font size */
+    button[data-baseweb="tab"] {
+        font-size: 24px;
+        padding: 12px 24px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 tab1, tab2, tab3 = st.tabs(["# Overview 🧭", "# Walkthrough 🧩", "# Security 🔒"])
 
