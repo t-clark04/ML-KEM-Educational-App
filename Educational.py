@@ -774,10 +774,10 @@ def generate_decaps_graph():
 st.markdown(
     """
     <style>
-    /* Increase tab font size */
-    button[data-baseweb="tab"] {
-        font-size: 24px;
-        padding: 12px 24px;
+    /* Target the text inside the tab button */
+    button[data-baseweb="tab"] > div > div > span {
+        font-size: 26px;
+        font-weight: 700;
     }
     </style>
     """,
