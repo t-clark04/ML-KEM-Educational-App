@@ -267,15 +267,15 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
 st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the **ML-KEM** cryptosystem becoming the standard for general encryption.")
-st.markdown("**Why was it needed?**")
+st.markdown("**Why is it needed?**")
 st.markdown("""
-            - Because the current encryption schemes in place around the globe were built to withstand attacks from *classical* computers, but the rise of *quantum* computers puts the security of these cryptosystems at risk.
-            - The ML-KEM was designed specifically with a post-quantum world in mind. It will soon be used by government agencies and private companies alike to keep information and communications secure.
+            - Because the current encryption schemes in place around the globe were built to withstand attacks from *classical* computers, but the rise of *quantum* computers threatens to put the security of these cryptosystems at risk.
+            - The ML-KEM was designed specifically to maintain security in a post-quantum world. It will soon be used by government agencies and private companies alike to keep information and communications secure.
             """)
 st.markdown("**How does it work?**")
 st.markdown("""
             - ML-KEM stands for *Module-Lattice-Based Key-Encapsulation-Mechanism*. 
-                - The phrase 'Module-Lattice Based' indicates that the encryption scheme is based on a hard problem in mathematics known as 'Module Learning with Errors' (MLWE). (See the **Security** tab for more information on MLWE.) 
+                - 'Module-Lattice-Based' indicates that the encryption scheme is derived from a hard problem in mathematics known as 'Module Learning with Errors' (MLWE). (See the **Security** tab for more information on MLWE.) 
                 - 'Key Encapsulation Mechanism' means that the goal of this scheme is to exchange a shared secret key between two parties (we'll call them Alice and Bob), which they can subsequently use in the framework of a symmetric key encryption scheme to exchange encrypted messages, authenticate digital information, etc.
             """)
 
