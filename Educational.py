@@ -266,7 +266,7 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
-st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the **ML-KEM** cryptosystem becoming the standard for general encryption.")
+st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the **ML-KEM** cryptosystem becoming the new standard for general encryption.")
 st.markdown("**Why is it needed?**")
 st.markdown("""
             - Because the current encryption schemes in place around the globe were built to withstand attacks from *classical* computers, but the rise of *quantum* computers threatens to put the security of these cryptosystems at risk.
@@ -277,6 +277,13 @@ st.markdown("""
             - ML-KEM stands for *Module-Lattice-Based Key-Encapsulation-Mechanism*. 
                 - 'Module-Lattice-Based' indicates that the encryption scheme is derived from a hard problem in mathematics known as 'Module Learning with Errors' (MLWE). (See the **Security** tab for more information on MLWE.) 
                 - 'Key Encapsulation Mechanism' means that the goal of this scheme is to exchange a shared secret key between two parties (we'll call them Alice and Bob), which they can subsequently use in the framework of a symmetric key encryption scheme to exchange encrypted messages, authenticate digital information, etc.
+            """)
+st.markdown("**What does the app do?**")
+st.markdown("""
+            - This app was designed as an educational tool to help instructors and students alike understand this seemingly daunting encryption scheme and break it down in a simpler way.
+                - The Overview tab contains interactive path diagrams illustrating each of the three major steps in the key encapsulation process.
+                - The Walkthrough tab then shows the user how these processes play out in code, allowing the user to select one of the three approved parameter sets and view what real output would look like at each substep.
+                - The Security tab offers a glimpse into the impregnability of the ML-KEM, showing first how a toy version of MLWE could be broken with lattice reduction algorithms but then highlighting how unsuccessful such methods would be in attacking the real cryptosystem.
             """)
 
 
