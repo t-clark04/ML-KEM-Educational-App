@@ -266,7 +266,7 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
-st.write("In August of 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption schemes, with the ML-KEM cryptosystem becoming the standard for general encryption."
+st.markdown("In August of 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption schemes, with the ML-KEM cryptosystem becoming the standard for general encryption."
         "Why?"
         "Because the current encryption schemes in place around the globe were built to withstand attacks from classical computers, but the rise of quantum computers puts the security of these cryptosystems at severe risk of being broken."
         "Therefore, the ML-KEM, which stands for Module-Lattice-Based Key-Encapsulation Mechanism, was designed specifically with a post-quantum world in mind. It will soon be used by government agencies and private companies alike to keep information secure.")
