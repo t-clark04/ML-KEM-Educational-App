@@ -765,7 +765,7 @@ def generate_decaps_graph():
   return html_string
 
 
-tab1, tab2, tab3 = st.tabs(["Overview 🧭", "Walkthrough 🧩", "Security 🔒"])
+tab1, tab2, tab3 = st.tabs(["# Overview 🧭", "# Walkthrough 🧩", "# Security 🔒"])
 
 with tab1:
     col1, col2, col3 = st.columns([0.05, 0.75, 0.2])
