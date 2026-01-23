@@ -774,9 +774,9 @@ def generate_decaps_graph():
 st.markdown(
     """
     <style>
-    /* Target the text inside the tab button */
-    button[data-baseweb="tab"] > div > div > span {
-        font-size: 26px;
+    /* Tab container */
+    button[data-baseweb="tab"] > div > p {
+        font-size: 26px !important;
         font-weight: 700;
     }
     </style>
