@@ -280,7 +280,6 @@ st.markdown("""
             """)
 st.markdown("**What does the app do?**")
 st.markdown("""
-            **What does the app do?**
             - This app was designed as an educational tool to help instructors and students alike understand this seemingly daunting encryption scheme and break it down in a simpler way.
                 - The Overview tab contains interactive path diagrams illustrating each of the three major steps in the key encapsulation process.
                 - The Walkthrough tab shows the user how these processes play out in code, allowing them to select one of the three approved parameter sets and view what real output would look like at each substep.
