@@ -282,8 +282,8 @@ st.markdown("**What does the app do?**")
 st.markdown("""
             - This app was designed as an educational tool to help instructors and students alike understand this seemingly daunting encryption scheme and break it down in a simpler way.
                 - The Overview tab contains interactive path diagrams illustrating each of the three major steps in the key encapsulation process.
-                - The Walkthrough tab then shows the user how these processes play out in code, allowing the user to select one of the three approved parameter sets and view what real output would look like at each substep.
-                - The Security tab offers a glimpse into the impregnability of the ML-KEM, showing first how a toy version of MLWE could be broken with lattice reduction algorithms but then highlighting how unsuccessful such methods would be in attacking the real cryptosystem.
+                - The Walkthrough tab shows the user how these processes play out in code, allowing them to select one of the three approved parameter sets and view what real output would look like at each substep.
+                - The Security tab offers a glimpse into the impregnability of the ML-KEM, showing first how a toy version of MLWE could be broken with lattice reduction algorithms but then illustrating how *unsuccessful* such methods would be in attacking the *real* cryptosystem.
             """)
 
 
