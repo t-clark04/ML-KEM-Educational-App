@@ -781,6 +781,8 @@ with tab1:
     decaps_graph_html = generate_decaps_graph()
     with col2:
       st.subheader("Key Generation Procedure")
+    col1, col2, col3 = st.columns([0.05, 0.65, 0.3])
+    with col2:
       components.html(keygen_graph_html, height=420, scrolling=False)
     with col3:
       st.markdown("""
