@@ -264,6 +264,20 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
         h_hat[2*i], h_hat[2*i + 1] = BaseCaseMultiply(f_hat[2*i], f_hat[2*i + 1], g_hat[2*i], g_hat[2*i + 1], zetas2[i])
     return(h_hat)
 
+st.markdown("""
+<style>
+[data-testid="stAppViewContainer"] {
+    font-size: 18px;
+    line-height: 1.65;
+}
+
+.block-container {
+    max-width: 980px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
 st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the *ML-KEM* cryptosystem becoming the new standard for general encryption.")
