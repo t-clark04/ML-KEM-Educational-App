@@ -826,7 +826,7 @@ with tab1:
                     2. Calculates $w = v - s^Tu$, which is approximately equal to $\\mu$.
                     3. Compresses $w$ back into a byte array $m'$, which should be equivalent to the same 32-byte, $m$, that Bob generated at the start of the encapsulation step.
                     4. Passes $m'$ and the original encapsulation key into a hash function to obtain $K'$. Assuming no decryption errors and that the ciphertext actually came from Bob, it is equivalent to the secret key, K, that Bob generated.
-                    5. Tests out all of the recovered parameters by re-running the encapsulation phase and ensuring that the process returns the same ciphertext that she received from Bob. If so, $K'$ is returned. Otherwise, the procedure outputs a dummy key $\\bar{K}$.
+                    5. Tests out the validity of the recovered parameters by re-running encapsulation and ensuring that the process returns the same ciphertext that she received from Bob. If so, $K'$ is returned. Otherwise, a dummy key $\\bar{K}$ is outputted.
                     """)
 
 # --- Kyber Parameters (Updated with eta2, d_u, d_v) ---
