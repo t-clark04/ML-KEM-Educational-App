@@ -790,13 +790,13 @@ with tab1:
     with col3:
       st.markdown("""
                   In the key generation procedure, Alice generates a public encapsulation key and a private decapsulation key. She sends the public key over to Bob while keeping the private key secret. In broad terms, Alice:
-                  1. Generates a random seed.
+                  1. Generates a random seed $d$.
                   2. Uses it to sample a $k \\times k$ matrix $A$ and two small $k \\times 1$ vectors $s$ and $e$, each containing degree-255 polynomials with coefficients in the ring of integers $\mathbb{Z}_{3329}$.
                   3. Multiplies $t = As + e$ and sends information about $A$ and $t$ to Bob as the public encapsulation key.
                   4. Keeps the secret vector $s$ to use as the decapsulation key.
                   """)
     with col2:
-      st.subheader("Encapsulation Procedure")
+      st.subheader("Encapsulation Procedure (Bob)")
     
     col1, col2, col3 = st.columns([0.05, 0.65, 0.3])
     with col2:
@@ -804,11 +804,12 @@ with tab1:
 
     with col3:
         st.markdown("""
-                In the key generation procedure, Alice generates a public encapsulation key and a private decapsulation key. She sends the public key over to Bob while keeping the private key secret. In broad terms, Alice:
-                1. Generates a random seed.
-                2. Uses it to sample a $k \\times k$ matrix $A$ and two small $k \\times 1$ vectors $s$ and $e$, each containing degree-255 polynomials with coefficients in the ring of integers $\mathbb{Z}_{3329}$.
-                3. Multiplies $t = As + e$ and sends information about $A$ and $t$ to Bob as the public encapsulation key.
-                4. Keeps the secret vector $s$ to use as the decapsulation key.
+                Having now received the public encapsulation key from Alice, Bob now generates a *secret key* $K$ that they will use for future symmetric-key communication. To send it back over to Alice in a secure manner, he uses her public encapsulation key to encrypt $K$ into a ciphertext that Alice can use her private decapsulation key to decrypt. In this phase, Bob:
+                1. Generates a random seed $m$ and passes it through a hash function along with Alice's public key to obtain the *secret key* $K$.
+                2. Unpacks Alice's encapsulation key to obtain her matrix $A$ and her vector $t$. 
+                3. Samples three small $k \\times 1$ vectors $y$, $e_1$, and $e_2$, each containing degree-255 polynomials with coefficients in the ring of integers $\mathbb{Z}_{3329}$.
+                4. Converts his original seed $m$, which can be used to re-generate $K$, into a polynomial $\\mu$.
+                5. Calculates $v = t^Ty + e_2 + \\mu$ and $u = A^Ty + e_1$ and compresses the resulting values down into a ciphertext $c$, which he sends over to Alice.
                 """)
     
     with col2:
