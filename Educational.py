@@ -809,7 +809,7 @@ with tab1:
                 2. Unpacks Alice's encapsulation key to obtain her matrix $A$ and her vector $t$. 
                 3. Samples three small $k \\times 1$ vectors $y$, $e_1$, and $e_2$, each containing degree-255 polynomials with coefficients in the ring of integers $\mathbb{Z}_{3329}$.
                 4. Converts his original seed $m$, which can be used to re-generate $K$, into a polynomial $\\mu$.
-                5. Calculates $v = t^Ty + e_2 + \\mu$ and $u = A^Ty + e_1$ and compresses the resulting values down into a ciphertext $c$, which he sends over to Alice.
+                5. Calculates $v = t^Ty + e_2 + \\mu$ and $u = A^Ty + e_1$ and compresses the resulting values down into a ciphertext $c$, which he sends over to Alice so that she can recover $K$.
                 """)
     
     with col2:
