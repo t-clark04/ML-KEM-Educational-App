@@ -784,6 +784,8 @@ with tab1:
     st.markdown("""
                 Hover over each node for more information about that variable, function or output. Also feel free to rearrange the placement of the nodes by clicking and dragging. Happy exploring!
                 """)
+    
+    st.divider()
 
     col1, col2, col3 = st.columns([0.05, 0.65, 0.3])
     keygen_graph_html = generate_keygen_graph()
