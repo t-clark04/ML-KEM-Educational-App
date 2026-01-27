@@ -264,6 +264,50 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
         h_hat[2*i], h_hat[2*i + 1] = BaseCaseMultiply(f_hat[2*i], f_hat[2*i + 1], g_hat[2*i], g_hat[2*i + 1], zetas2[i])
     return(h_hat)
 
+st.markdown("""
+<style>
+/* Import professional UI font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Global defaults */
+html, body, [class*="css"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: #111827;
+}
+
+/* Make headings slightly tighter and heavier */
+h1, h2, h3, h4 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Improve paragraph readability */
+p, li {
+    font-size: 1rem !important;
+    line-height: 1.6;
+}
+
+/* Make code blocks look academic */
+code, pre {
+    font-family: "JetBrains Mono", "Consolas", monospace;
+    font-size: 0.95rem;
+}
+
+/* Sidebar text consistency */
+section[data-testid="stSidebar"] * {
+    font-size: 0.95rem !important;
+}
+
+/* Reduce excessive Streamlit padding */
+.block-container {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+</style>
+""", unsafe_allow_html=True)
+
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
 st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the *ML-KEM* cryptosystem becoming the new standard for general encryption.")
