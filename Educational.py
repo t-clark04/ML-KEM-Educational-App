@@ -777,7 +777,13 @@ tab1, tab2, tab3 = st.tabs(["# Overview 🧭", "# Walkthrough 🧩", "# Security
 with tab1:
     st.markdown("## Interactive Overview of ML-KEM")
 
-    st.markdown("blah blah blah")
+    st.markdown("""
+                Below you will find three interactive path diagrams outlining the key generation, encapsulation, and decapsulation procedures of the ML-KEM cryptosystem.
+                """)
+    
+    st.markdown("""
+                Hover over each node for more information about that variable, function or output. Also feel free to rearrange the placement of the nodes by clicking and dragging. Happy exploring!
+                """)
 
     col1, col2, col3 = st.columns([0.05, 0.65, 0.3])
     keygen_graph_html = generate_keygen_graph()
