@@ -782,7 +782,7 @@ with tab1:
                 """)
     
     st.markdown("""
-                Hover over each node for more information about that variable, function or output. Also feel free to rearrange the placement of the nodes by clicking and dragging. Happy exploring!
+                Hover over each node for more information about that variable, function or output, and rerearrange the placement of the nodes by clicking and dragging. Happy exploring!
                 """)
     
     st.divider()
