@@ -779,16 +779,21 @@ with tab1:
     keygen_graph_html = generate_keygen_graph()
     encaps_graph_html = generate_encaps_graph()
     decaps_graph_html = generate_decaps_graph()
+
     with col2:
-      st.subheader("Key Generation Procedure")
+      st.subheader("Key Generation Procedure (Alice)")
+    
     col1, col2, col3 = st.columns([0.05, 0.65, 0.3])
     with col2:
       components.html(keygen_graph_html, height=420, scrolling=False)
+
     with col3:
       st.markdown("""
-                  \n
-                  \n
-                  blah blah blah
+                  In the key generation procedure, Alice generates a public encapsulation key and a private decapsulation key. She sends the public key over to Bob while keeping the private key secret. To do so, Alice:
+                  1. Generates a random seed.
+                  2. Uses it to sample a $k \times k$ matrix $A$ and two small $k \times 1$ vectors $s$ and $e$, each of which contain polynomials of degree 255 with coefficients in the ring of integers mod 3329.
+                  3. Multiplies $t = As + e$ and sends information about $A$ and $t$ to Bob as the public encapsulation key.
+                  4. Keeps the secret vector $s$ to use as the decapsulation key.
                   """)
     with col2:
       st.subheader("Encapsulation Procedure")
