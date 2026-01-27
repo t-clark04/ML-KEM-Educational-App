@@ -266,45 +266,27 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 
 st.markdown("""
 <style>
-/* Import professional UI font */
+
+/* Import font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Global defaults */
-html, body, [class*="css"] {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 17px;
+/* Streamlit app root */
+.stApp {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: 17px !important;
     line-height: 1.55;
-    color: #111827;
 }
 
-/* Make headings slightly tighter and heavier */
-h1, h2, h3, h4 {
-    font-weight: 600;
-    letter-spacing: -0.01em;
+/* Catch everything */
+.stApp * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
 }
 
-/* Improve paragraph readability */
-p, li {
+/* Text elements */
+p, li, span, div, label {
     font-size: 1rem !important;
-    line-height: 1.6;
 }
 
-/* Make code blocks look academic */
-code, pre {
-    font-family: "JetBrains Mono", "Consolas", monospace;
-    font-size: 0.95rem;
-}
-
-/* Sidebar text consistency */
-section[data-testid="stSidebar"] * {
-    font-size: 0.95rem !important;
-}
-
-/* Reduce excessive Streamlit padding */
-.block-container {
-    padding-top: 2.5rem;
-    padding-bottom: 3rem;
-}
 </style>
 """, unsafe_allow_html=True)
 
