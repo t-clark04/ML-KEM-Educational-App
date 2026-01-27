@@ -266,19 +266,16 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 
 st.markdown("""
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&display=swap');
+
 [data-testid="stAppViewContainer"] {
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif !important;
     font-size: 18px;
-    line-height: 1.65;
+    line-height: 1.7;
 }
 
-/* Limit line width for readability */
-.block-container {
-    max-width: 1000px;
-}
-
-/* Improve paragraph spacing */
-p {
-    margin-bottom: 0.8em;
+[data-testid="stAppViewContainer"] * {
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif !important;
 }
 </style>
 """, unsafe_allow_html=True)
