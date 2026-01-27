@@ -267,28 +267,30 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 st.markdown("""
 <style>
 
-/* Import font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Import Source Sans 3 */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap');
 
-/* Streamlit app root */
-.stApp {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: 17px !important;
-    line-height: 1.55;
+/* Target Streamlit root */
+[data-testid="stAppViewContainer"] {
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: 17.5px;
+    line-height: 1.6;
 }
 
-/* Catch everything */
-.stApp * {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+/* Force all children */
+[data-testid="stAppViewContainer"] * {
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
 }
 
-/* Text elements */
-p, li, span, div, label {
-    font-size: 1rem !important;
+/* Headings */
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 </style>
 """, unsafe_allow_html=True)
+
 
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
