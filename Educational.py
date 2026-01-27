@@ -778,7 +778,10 @@ with tab1:
     st.markdown("## Interactive Overview of ML-KEM")
 
     st.markdown("""
-                Below you will find three interactive path diagrams outlining the key generation, encapsulation, and decapsulation procedures of the ML-KEM cryptosystem.
+                Below you will find interactive path diagrams outlining the three main procedures in the ML-KEM cryptosystem. These are:
+                1. Key Generation (Alice)
+                2. Encapsulation (Bob)
+                3. Decapsulation (Alice)
                 """)
     
     st.markdown("""
