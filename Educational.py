@@ -813,11 +813,21 @@ with tab1:
                 """)
     
     with col2:
-      st.subheader("Decapsulation Procedure")
+      st.subheader("Decapsulation Procedure (Alice)")
     
     col1, col2, col3 = st.columns([0.05, 0.65, 0.3])
     with col2:
       components.html(decaps_graph_html, height = 570, scrolling = False)
+    
+    with col3:
+        st.markdown("""
+                    Now, it's time for Alice to uncover $K$. To understand how, it is important to note that if Alice can recover $\\mu$, then she can backtrack to recover the seed $m$ and therefore re-generate $K$. However, the only person who can uncover $\\mu$ is Alice, precisely because she held onto her original secret vector $s$ in the formula $t = As + e$. She finishes this phase by executing a process known as implicit rejection for a layer of added security. In decapsulation, Alice:
+                    1. Parses through Bob's ciphertext to recover the values for $v$ and $u$ from the previous step.
+                    2. Calculates $w = v - s^Tu$, which is approximately equal to $\\mu$.
+                    3. Compresses $w$ back into a byte array $m'$, which should be equivalent to the same 32-byte, $m$, that Bob generated at the start of the encapsulation step.
+                    4. Passes $m'$ and the original encapsulation key into a hash function to obtain $K'$. Assuming no decryption errors and that the ciphertext actually came from Bob, it is equivalent to the secret key, K, that Bob generated.
+                    5. Tests out all of the recovered parameters by re-running the encapsulation phase and ensuring that the process returns the same ciphertext that she received from Bob. If so, $K'$ is returned. Otherwise, the procedure outputs a dummy key $\\bar{K}$.
+                    """)
 
 # --- Kyber Parameters (Updated with eta2, d_u, d_v) ---
 KYBER_PARAMS = {
