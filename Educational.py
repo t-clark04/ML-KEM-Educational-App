@@ -784,6 +784,8 @@ with tab1:
       components.html(keygen_graph_html, height=420, scrolling=False)
     with col3:
       st.markdown("""
+                  \n
+                  \n
                   blah blah blah
                   """)
     with col2:
