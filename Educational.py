@@ -782,6 +782,11 @@ with tab1:
     with col2:
       st.subheader("Key Generation Procedure")
       components.html(keygen_graph_html, height=420, scrolling=False)
+    with col3:
+      st.markdown("""
+                  blah blah blah
+                  """)
+    with col2:
       st.subheader("Encapsulation Procedure")
       components.html(encaps_graph_html, height = 570, scrolling = False)
       st.subheader("Decapsulation Procedure")
