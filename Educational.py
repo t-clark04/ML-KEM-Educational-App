@@ -266,28 +266,20 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 
 st.markdown("""
 <style>
-
-/* Import Source Sans 3 */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap');
-
-/* Target Streamlit root */
 [data-testid="stAppViewContainer"] {
-    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: 17.5px;
-    line-height: 1.6;
+    font-size: 18px;
+    line-height: 1.65;
 }
 
-/* Force all children */
-[data-testid="stAppViewContainer"] * {
-    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+/* Limit line width for readability */
+.block-container {
+    max-width: 1000px;
 }
 
-/* Headings */
-h1, h2, h3 {
-    font-weight: 600;
-    letter-spacing: -0.01em;
+/* Improve paragraph spacing */
+p {
+    margin-bottom: 0.8em;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
