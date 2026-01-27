@@ -771,23 +771,11 @@ def generate_decaps_graph():
       html_string = f.read()
   return html_string
 
-st.markdown(
-    """
-    <style>
-    /* Tab container */
-    button[data-baseweb="tab"] > div > p {
-        font-size: 26px !important;
-        font-weight: 700;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 tab1, tab2, tab3 = st.tabs(["# Overview 🧭", "# Walkthrough 🧩", "# Security 🔒"])
 
 with tab1:
-    col1, col2, col3 = st.columns([0.05, 0.75, 0.2])
+    col1, col2, col3 = st.columns([0.05, 0.65, 0.3])
     keygen_graph_html = generate_keygen_graph()
     encaps_graph_html = generate_encaps_graph()
     decaps_graph_html = generate_decaps_graph()
