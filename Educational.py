@@ -640,7 +640,7 @@ def generate_decaps_graph():
   net.add_node("K_bar", label="K̄", title="A dummy secret key for the implicit rejection scheme.", shape="database", color="orangered", x=-1045, y=-270, font={'color': 'white'})
   net.add_node("Decompress1", label="Decompress", title="Returns the vector of polynomials \n with full 12-bit integer coefficients.", shape="box", color="steelblue", x=-831, y=-224, font={'color': 'white'})
   net.add_node("Decompress2", label="Decompress", title="Returns the array representation of the polynomial \n with full 12-bit integers.", shape="box", color="steelblue", x=-946, y=181, font={'color': 'white'})
-  net.add_node("f_hat", label="f̂ = ŝᵀ·û'", title="NTT representation of temporary variable f̂.", shape="ellipse", color="seagreen", x=-829, y=52, font={'color': 'white'})
+  net.add_node("f_hat", label="f̂ = ŝᵀ·û'", title="NTT representation of a temporary variable used to recover m.", shape="ellipse", color="seagreen", x=-829, y=52, font={'color': 'white'})
   net.add_node("u_hat_prime", label="û'", title="NTT representation of u'.", shape="ellipse", color="seagreen", x=-829, y=-21, font={'color': 'white'})
   net.add_node("NTT", label="NTT", title="Computes the NTT representation of u'.", shape="box", color="steelblue", x=-831, y=-95, font={'color': 'white'})
   net.add_node("u_prime", label="u'", title="Should be equivalent to u = Aᵀy + e₁ (assuming no decryption errors \n and that the ciphertext actually came from Bob).", shape="ellipse", color="seagreen", x=-832, y=-170, font={'color': 'white'})
