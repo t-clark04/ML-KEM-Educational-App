@@ -453,7 +453,7 @@ def generate_encaps_graph():
   net.add_node("r", label="r", title="A random 32-byte seed.", shape="ellipse", color="seagreen", x=-684, y=-553, font={'color': 'white'})
   net.add_node("i", label="i", title="An increasing index value.", shape="ellipse", color="seagreen", x=-355, y=-735, font={'color': 'white'})
   net.add_node("j", label="j", title="An increasing index value.", shape="ellipse", color="seagreen", x=-312, y=-734, font={'color': 'white'})
-  net.add_node("t_hat_y_hat", label="t̂ᵀ·ŷ", title="NTT multiplication of t̂ and ŷ.", shape="box", color="steelblue", x=-417, y=-656, font={'color': 'white'})
+  net.add_node("t_hat_y_hat", label="t̂ᵀ·ŷ", title="NTT multiplication of t_hat and ŷ.", shape="box", color="steelblue", x=-417, y=-656, font={'color': 'white'})
   net.add_node("Decompress", label="Decompress₁", title="Takes each of the individual bits from the output of Byte Decode₁ \n and returns a full 12-bit version of them. In practice, \n this means that the array becomes a representation of a polynomial \n with coefficients equal to either 0 or 1665.", shape="box", color="steelblue", x=29, y=-738, font={'color': 'white'})
   net.add_node("N", label="N", title="An increasing index value.", shape="ellipse", color="seagreen", x=-540, y=-399, font={'color': 'white'})
   net.add_node("eta1", label="η₁", title="Model parameter taking the value of either 2 or 3.", shape="ellipse", color="seagreen", x=-535, y=-636, font={'color': 'white'})
