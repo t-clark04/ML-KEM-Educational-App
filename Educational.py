@@ -314,7 +314,7 @@ def generate_keygen_graph():
     net.add_node("i", label="i", title="An increasing index value.", shape="ellipse", color="seagreen", x=-335, y=-493, font={'color': 'white'})
     net.add_node("j", label="j", title="An increasing index value.", shape="ellipse", color="seagreen", x=-253, y=-491, font={'color': 'white'})
     net.add_node("A_hat", label="Â", title="A k x k matrix containing elements from the NTT domain \n (NTT representations of polynomials). Sometimes called \n the public key matrix.", shape="ellipse", color="seagreen", x=-167, y=-513, font={'color': 'white'})
-    net.add_node("t_hat", label="t\u0302 = Â · ŝ + ê", title="A k x 1 matrix containing elements from the NTT domain \n (NTT representations of polynomials). With Â, makes up \n the public key.", shape="ellipse", color="seagreen", x=-43, y=-513, font={'color': 'white'})
+    net.add_node("t_hat", label="t\u0302 = Â · ŝ + ê", title="A k x 1 matrix containing elements from the NTT domain \n (NTT representations of polynomials). Along with Â, makes up \n the public key.", shape="ellipse", color="seagreen", x=-43, y=-513, font={'color': 'white'})
     net.add_node("BE1", label="Byte \n Encode", title="Encodes arrays of 256 integers (i.e. sets of polynomial coefficients) \n into byte arrays for compactness and standardization.", shape="box", color="steelblue", x=151, y=-432, font={'color': 'white'})
     net.add_node("dk_PKE", label="dk_PKE", title="Byte array representation of the secret vector ŝ.", shape="ellipse", color="seagreen", x=66, y=-513, font={'color': 'white'})
     net.add_node("dk", label="dk", title="Concatention of the secret vector ŝ, the encapsulation \n key ek, a hashed version of the encapsulation \n key, and a random seed z. Alice keeps this secret for later.", shape="database", color="orangered", x=64, y=-581, font={'color': 'white'})
@@ -446,15 +446,15 @@ def generate_encaps_graph():
   net.add_node("G", label="G", title="Hash function. Here, it takes in the concatenation of m and the \n output of function H, and produces two 32-byte outputs, \n K and r.", shape="box", color="steelblue", x=-684, y=-658, font={'color': 'white'})
   net.add_node("H", label="H", title="Hash function. Here, it takes in the encapsulation key, ek, \n and produces one pseudorandom 32-byte array that gets \n passed into the G function.", shape="box", color="steelblue", x=-615, y=-708, font={'color': 'white'})
   net.add_node("rho", label="ρ", title="Pseudorandom 32-byte array used to construct Â.", shape="ellipse", color="seagreen", x=-453, y=-793, font={'color': 'white'})
-  net.add_node("sNTT", label="Sample \n NTT", title="Takes in a 32-byte seed (ρ) and two indices (i and j) \n and produces pseudorandom elements in the NTT ring. \n Here, Bob uses the same inputs as Alice did, \n and so the result is the same (Â)", shape="box", color="steelblue", x=-334, y=-792, font={'color': 'white'})
+  net.add_node("sNTT", label="Sample \n NTT", title="Takes in a 32-byte seed (ρ) and two indices (i and j) \n and produces pseudorandom elements in the NTT ring. \n Here, Bob uses the same inputs as Alice did, \n and so the result is the same (Â).", shape="box", color="steelblue", x=-334, y=-792, font={'color': 'white'})
   net.add_node("A_hat", label="Â", title="A k x k matrix containing elements from the NTT domain \n (NTT representations of polynomials).", shape="ellipse", color="seagreen", x=-211, y=-792, font={'color': 'white'})
-  net.add_node("BD2", label="Byte \n Decode₁", title="Turns the random 32-byte array, m, into an \n array of 1-bit integers (i.e. 0s and 1s).", shape="box", color="steelblue", x=28, y=-828, font={'color': 'white'})
+  net.add_node("BD2", label="Byte \n Decode₁", title="Turns the random 32-byte array, m, into an \n array of 256 1-bit integers (i.e. 0s and 1s).", shape="box", color="steelblue", x=28, y=-828, font={'color': 'white'})
   net.add_node("K", label="K", title="A 32-byte array, and the eventual shared secret between \n Bob and Alice. Its generation depends on m and ek.", shape="database", color="orangered", x=-763, y=-657, font={'color': 'white'})
   net.add_node("r", label="r", title="A random 32-byte seed.", shape="ellipse", color="seagreen", x=-684, y=-553, font={'color': 'white'})
   net.add_node("i", label="i", title="An increasing index value.", shape="ellipse", color="seagreen", x=-355, y=-735, font={'color': 'white'})
   net.add_node("j", label="j", title="An increasing index value.", shape="ellipse", color="seagreen", x=-312, y=-734, font={'color': 'white'})
   net.add_node("t_hat_y_hat", label="t̂ᵀ·ŷ", title="NTT multiplication of t̂ and ŷ.", shape="box", color="steelblue", x=-417, y=-656, font={'color': 'white'})
-  net.add_node("Decompress", label="Decompress₁", title="Takes each of the individual bits from the output of Byte Decode₁ \n and returns a full 12-bit version of them (becomes \n a representation of a polynomial).", shape="box", color="steelblue", x=29, y=-738, font={'color': 'white'})
+  net.add_node("Decompress", label="Decompress₁", title="Takes each of the individual bits from the output of Byte Decode₁ \n and returns a full 12-bit version of them. In practice, \n this means that the array becomes a representation of a polynomial \n with coefficients of either 0 or 1665.", shape="box", color="steelblue", x=29, y=-738, font={'color': 'white'})
   net.add_node("N", label="N", title="An increasing index value.", shape="ellipse", color="seagreen", x=-540, y=-399, font={'color': 'white'})
   net.add_node("eta1", label="η₁", title="Model parameter taking the value of either 2 or 3.", shape="ellipse", color="seagreen", x=-535, y=-636, font={'color': 'white'})
   net.add_node("INTT1", label="NTT⁻¹", title="The inverse of the NTT function. Converts back to the \n polynomial ring to get tᵀ·y.", shape="box", color="steelblue", x=-300, y=-653, font={'color': 'white'})
@@ -819,7 +819,7 @@ with tab1:
 
     with col3:
         st.markdown("""
-                Having now received the public encapsulation key from Alice, Bob now generates a *secret key* $K$ that they will use for future symmetric-key communication. To send it back over to Alice in a secure manner, he uses her public encapsulation key to encrypt $K$ into a ciphertext that *only Alice* can decrypt using her private decapsulation key. In this phase, Bob:
+                Having received the public encapsulation key from Alice, Bob now generates a *secret key* $K$ that they will use for future symmetric-key communication. To send it back over to Alice in a secure manner, he uses her public encapsulation key to encrypt $K$ into a ciphertext that *only Alice* can decrypt using her private decapsulation key. In this phase, Bob:
                 1. Generates a random seed $m$ and passes it through a hash function along with Alice's public key to obtain the *secret key* $K$.
                 2. Unpacks Alice's encapsulation key to obtain her matrix $A$ and her vector $t$. 
                 3. Samples three small $k \\times 1$ vectors $y$, $e_1$, and $e_2$, each containing degree-255 polynomials with coefficients in the ring of integers $\mathbb{Z}_{3329}$.
