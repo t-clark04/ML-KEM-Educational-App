@@ -267,9 +267,9 @@ def MultiplyNTTs(f_hat, g_hat, zetas1 = zetas1):
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
 st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the *ML-KEM* cryptosystem becoming the new standard for general encryption.")
-st.markdown("###### **Why is it needed?**")
+st.markdown("###### **Why was it needed?**")
 st.markdown("""
-            - Because the current encryption schemes in place around the globe were built to withstand attacks from *classical* computers, but the rise of *quantum* computers threatens to put the security of these cryptosystems at risk.
+            - Because the current encryption schemes in place around the globe were built to withstand attacks from *classical* computers, but the rise of *quantum* computers will put the security of these cryptosystems at risk.
             - The ML-KEM was designed specifically to maintain security in a post-quantum world. It will soon be used by government agencies and private companies alike to keep information and communications secure.
             """)
 st.markdown("###### **How does it work?**")
@@ -280,7 +280,7 @@ st.markdown("""
             """)
 st.markdown("###### **What does the app do?**")
 st.markdown("""
-            - This app was designed as an educational tool to help instructors and students alike understand this seemingly daunting encryption scheme and break it down in a simpler way.
+            - This app was designed as an educational tool to help instructors and students understand this seemingly daunting encryption scheme and break it down in a simpler way.
                 - The Overview tab contains interactive path diagrams illustrating each of the three major steps in the key encapsulation process.
                 - The Walkthrough tab shows the user how these processes play out in code, allowing them to select one of the three approved parameter sets and view what real output would look like at each substep.
                 - The Security tab offers a glimpse into the impregnability of the ML-KEM, showing first how a toy version of MLWE could theoretically be broken with lattice reduction algorithms but then illustrating how *unsuccessful* such methods would be in attacking the *real* cryptosystem.
@@ -804,7 +804,7 @@ with tab1:
 
     with col3:
       st.markdown("""
-                  In the key generation procedure, Alice generates a public encapsulation key and a private decapsulation key. She sends the public key over to Bob while keeping the private key secret. In broad terms, Alice:
+                  In the key generation procedure, Alice generates a public encapsulation key and a private decapsulation key. She sends the public key over to Bob while keeping the private key secret. To do this, Alice:
                   1. Generates a random seed $d$.
                   2. Uses it to sample a $k \\times k$ matrix $A$ and two small $k \\times 1$ vectors $s$ and $e$, each containing degree-255 polynomials with coefficients in the ring of integers $\mathbb{Z}_{3329}$.
                   3. Multiplies $t = As + e$ and sends information about $A$ and $t$ to Bob as the public encapsulation key.
