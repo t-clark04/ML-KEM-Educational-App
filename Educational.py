@@ -635,7 +635,7 @@ def generate_decaps_graph():
   net.add_node("BD3", label="Byte \n Decode", title="Decodes the ciphertext component c₂ back into an array \n representing a polynomial with dᵥ (4 or 5)-bit integer coefficients.", shape="box", color="steelblue", x=-950, y=52, font={'color': 'white'})
   net.add_node("d_v", label="dᵥ", title="Model paramter taking a value of either 4 or 5.", shape="ellipse", color="seagreen", x=-1023, y=122, font={'color': 'white'})
   net.add_node("cond_1", label="If c = c', \n return K'", title="If the two ciphertexts match, the process returns \n the real shared secret key K'.", shape="circle", color="crimson", x=-319, y=-423, font={'color': 'white'})
-  net.add_node("cond_2", label="If c ≠ c', \n return K̄", title="If the two ciphertexts, don't match, \n the process returns a dummy secret key instead.", shape="circle", color="crimson", x=-324, y=-296, font={'color': 'white'})
+  net.add_node("cond_2", label="If c ≠ c', \n return K̄", title="If the two ciphertexts don't match, \n the process returns a dummy secret key instead.", shape="circle", color="crimson", x=-324, y=-296, font={'color': 'white'})
   net.add_node("s_hat", label="ŝ", title="The NTT representation of Alice's secret vector s.", shape="ellipse", color="seagreen", x=-701, y=48, font={'color': 'white'})
   net.add_node("K_bar", label="K̄", title="A dummy secret key for the implicit rejection scheme.", shape="database", color="orangered", x=-1045, y=-270, font={'color': 'white'})
   net.add_node("Decompress1", label="Decompress", title="Returns the vector of polynomials \n with full 12-bit integer coefficients.", shape="box", color="steelblue", x=-831, y=-224, font={'color': 'white'})
