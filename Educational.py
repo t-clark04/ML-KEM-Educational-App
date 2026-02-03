@@ -1849,7 +1849,7 @@ ENCAPSULATION_STEPS = [
     },
     {
         "title": "Packaging Up the Ciphertext",
-        "description": "Time for Bob to package up his ciphertext to send back over to Alice. Just as Alice didn't directly send her public key $(\hat{t}, \hat{A})$ to Bob to add another layer of security, niehter will Bob with his $u$ and $v$ variables. Each one is first compressed -- $u$ into an array of 10- or 11-bit integers (depending on the value of model parameter $d_u$) and $v$ into an array of 4- or 5-bit integers (depending on the value of the model paramter $d_v$). They are both then encoded as byte arrays for standardization and efficiency. Finally, the concatenation of the compressed byte array of $u$ (now called $c_1$) and the compressed byte array of $v$ (now called $c_2$) are returned as Bob's ciphertext $c$. This is what he sends over to Alice at the end of the encapsulation procedure. The output is given below:",
+        "description": "Time for Bob to package up his ciphertext to send back over to Alice. Just as Alice didn't directly send her public key $(\hat{A}, \hat{t})$ to Bob, neither will Bob with his $u$ and $v$ variables. Each one is first compressed -- $u$ into an array of 10- or 11-bit integers (depending on the value of model parameter $d_u$) and $v$ into an array of 4- or 5-bit integers (depending on the value of the model paramter $d_v$). They are both then encoded as byte arrays for standardization and efficiency. Finally, the concatenation of the compressed byte array of $u$ (now called $c_1$) and the compressed byte array of $v$ (now called $c_2$) are returned as Bob's ciphertext $c$. This is what he sends over to Alice at the end of the encapsulation procedure. The output is given below:",
         "action": encaps_step_7
     }
 ]
@@ -2103,7 +2103,7 @@ with tab2:
                 st.code(output, language='text')
             
             if current_step_index == len(ENCAPSULATION_STEPS) - 1:
-                st.success("🎉 **Encapsulation Complete!** Bob keeps his copy of the shared secret and sends the ciphertext over to Alice. Click the button below to continue")
+                st.success("🎉 **Encapsulation Complete!** Bob keeps his copy of the secret key and sends the ciphertext over to Alice. Click the button below to continue on to decapsulation.")
         
          # --- PHASE 2: DECAPSULATION ---
         elif current_phase == 'Decapsulation':
