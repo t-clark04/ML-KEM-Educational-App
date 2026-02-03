@@ -1882,7 +1882,7 @@ DECAPSULATION_STEPS = [
     },
     {
         "title": "Reconstructing $K$ ($K'$)",
-        "description": "Now that Alice has recovered $m$ ($m'$), all she needs to do is pass it into the hash function, $G$, as a seed along with the hash of the encapsulation key ($h$), just as Bob did, to get out the same shared secret key $K$ (although we denote this as $K'$ as before). $K'$ is shown below. The process is not over, though. To ensure no errors or bogus attacks in the decapsulation process, Alice will carry out a verification process known as implicit rejection, which starts in the next step.",
+        "description": "Now that Alice has recovered $m$ ($m'$), she must pass it into the hash function, $G$, as a seed along with the hash of the encapsulation key ($h$). Since this is exactly what Bob did, Alice should get out the same shared secret key $K$ (although we denote this as $K'$ as before). $K'$ is shown below. The process is not over, though. To ensure no errors or bogus attacks in the decapsulation process, Alice will carry out a verification process known as implicit rejection, which starts in the next step.",
         "action": decaps_step_6
     },
     {
