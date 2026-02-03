@@ -1872,7 +1872,7 @@ DECAPSULATION_STEPS = [
     },
     {
         "title": "Starting the Process of Recovering $\\mu$",
-        "description": "Now, to move in the direction of recovering $\\mu$ (and therefore $m$), Alice first computes the NTT representation of $u'$, which we denote as $\hat{u}'$. This allows her to multiply $\hat{s}^T\hat{u}'$ and take the inverse NTT of the result to get $s^Tu'$, and we define this as our temporary variable, $f$. The value of $f$ is given below:",
+        "description": "Now, to move in the direction of recovering $\\mu$, Alice first computes the NTT representation of $u'$, which we denote as $\hat{u}'$. This allows her to multiply $\hat{s}^T\hat{u}'$ and take the inverse NTT of the result to get $s^Tu'$. We define this as a temporary variable, $f$. The value of $f$ is given below:",
         "action": decaps_step_4
     },
     {
