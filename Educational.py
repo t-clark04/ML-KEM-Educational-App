@@ -2007,7 +2007,7 @@ with tab2:
     )
 
     st.markdown(
-        "In all approved parameter sets, the modulus $q$ takes a value of 3329. This means that all polynomial coefficients are integers in [0, 3328]. Furthermore, the polynomial degree $n$ is always equal to 256, so every coefficient array has a length of 256, and every polynomial in $R_q$ is of the 255-th degree. Lastly, in all three parameter sets, the size of the secret key (K) that Bob generates and sends in a ciphertext to Alice is 32 bytes (256 bits)."
+        "In all approved parameter sets, the modulus $q$ takes a value of 3329. This means that all polynomial coefficients are integers in [0, 3328]. Furthermore, the polynomial degree $n$ is always equal to 256, so every coefficient array has a length of 256, and every polynomial in $R_q = \mathbb{Z}_q[X]/(X^n + 1)$ is of the 255-th degree. Lastly, in all three parameter sets, the size of the secret key (K) that Bob generates and sends in a ciphertext to Alice is 32 bytes (256 bits)."
     )
 
     col_select, col_start_key_gen, col_reset_all = st.columns([2, 1, 1])
