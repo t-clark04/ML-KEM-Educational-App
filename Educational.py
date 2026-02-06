@@ -270,7 +270,7 @@ st.markdown("##### In August 2024, the National Institute of Standards and Techn
 st.markdown("###### **Why was it needed?**")
 st.markdown("""
             - Because the current encryption schemes in place around the globe were built to withstand attacks from *classical* computers, but the rise of *quantum* computers will put the security of these cryptosystems at risk.
-            - The ML-KEM was designed specifically to maintain security in a post-quantum world. It will soon be used by government agencies and private companies alike to keep information and communications secure.
+            - The ML-KEM was designed specifically to maintain security in a post-quantum world. It is being standardized for future cryptographic protocols in both the public and private sectors to keep information and communications secure.
             """)
 st.markdown("###### **How does it work?**")
 st.markdown("""
@@ -845,7 +845,7 @@ with tab1:
                     2. Calculates $w = v - s^Tu$, which is approximately equal to $\\mu$.
                     3. Compresses $w$ back into a byte array $m'$, which should be equivalent to the same 32-byte, $m$, that Bob generated at the start of the encapsulation step.
                     4. Passes $m'$ and the original encapsulation key into a hash function to obtain $K'$. Assuming no decryption errors and that the ciphertext actually came from Bob, this is equivalent to the secret key, K, that Bob generated.
-                    5. Tests out all of the recovered parameters by re-running encapsulation and ensuring that the process returns the same ciphertext that she received from Bob. If so, $K'$ is returned. Otherwise, a dummy key $\\bar{K}$ is outputted.
+                    5. Re-runs encapsulation using the recovered parameters to validate the ciphertext she received from Bob and prevent chosen-ciphertext attacks. If the ciphertexts match, $K'$ is returned. Otherwise, a dummy key $\\bar{K}$ is outputted.
                     """)
 
 # --- Kyber Parameters (Updated with eta2, d_u, d_v) ---
