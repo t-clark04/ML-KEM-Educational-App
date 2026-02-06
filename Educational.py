@@ -823,7 +823,7 @@ with tab1:
 
     with col3:
         st.markdown("""
-                Having received the public encapsulation key from Alice, Bob now generates a *secret key* $K$ that they will use for future symmetric-key communication. To send it back over to Alice in a secure manner, he uses her public encapsulation key to encrypt information that can be used to reconstruct $K$ into a ciphertext that *only Alice* can decrypt using her private decapsulation key. In this phase, Bob:
+                Having received the public encapsulation key from Alice, Bob now generates a *secret key* $K$ that they will use for future symmetric-key communication. To send it back over to Alice in a secure manner, he uses her public encapsulation key to encrypt information about $K$ into a ciphertext that *only Alice* can decrypt using her private decapsulation key. In this phase, Bob:
                 1. Generates a random seed $m$ and passes it through a hash function along with Alice's public key to obtain the *secret key* $K$.
                 2. Unpacks Alice's encapsulation key to obtain her matrix $A$ and her vector $t$. 
                 3. Samples three small $k \\times 1$ vectors $y$, $e_1$, and $e_2$, each containing degree-255 polynomials with coefficients in the ring of integers $\mathbb{Z}_{3329}$.
