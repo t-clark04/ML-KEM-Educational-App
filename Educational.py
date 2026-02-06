@@ -840,7 +840,7 @@ with tab1:
     
     with col3:
         st.markdown("""
-                    Now, it's time for Alice to uncover $K$. To understand how, it is important to note that if Alice can recover $\\mu$, then she can backtrack to recover the seed $m$ and therefore re-generate $K$. Moreover, the only person who can uncover $\\mu$ is Alice, precisely because she held onto her original secret vector $s$ in the formula $t = As + e$. Thus, in decapsulation, Alice:
+                    Now, it's time for Alice to uncover $K$. To understand how, it is important to note that if Alice can recover $\\mu$ (albeit with some noise), then she can backtrack to recover the seed $m$ and therefore re-generate $K$. Moreover, the only person who can execute this decryption is Alice, precisely because she held onto her original secret vector $s$ in the formula $t = As + e$. Thus, in decapsulation, Alice:
                     1. Parses through Bob's ciphertext to recover the values for $v$ and $u$ from the previous step.
                     2. Calculates $w = v - s^Tu$, which is approximately equal to $\\mu$.
                     3. Compresses $w$ back into a byte array $m'$, which should be equivalent to the same 32-byte, $m$, that Bob generated at the start of the encapsulation step.
