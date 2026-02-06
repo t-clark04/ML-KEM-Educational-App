@@ -278,7 +278,7 @@ st.markdown("""
                 - 'Module-Lattice-Based' indicates that the encryption scheme is derived from a hard problem in mathematics known as 'Module Learning with Errors' (MLWE). (See the **Security** tab for more information on MLWE.) 
                 - 'Key Encapsulation Mechanism' means that the goal of this scheme is to exchange a shared secret key between two parties (we'll call them Alice and Bob), which they can subsequently use in the framework of a symmetric key encryption scheme to exchange encrypted messages, authenticate digital information, etc.
             """)
-st.markdown("###### *So, ML-KEM doesn't actually encrypt messages?*")
+st.markdown("###### **So, ML-KEM doesn't actually encrypt messages?**")
 st.markdown("""
             - Correct. ML-KEM does **not** encrypt messages. It is used to securely agree on a shared secret key, which can then be used inside of a symmetric encryption scheme such as AES (Advanced Encryption Standard).
             """)
