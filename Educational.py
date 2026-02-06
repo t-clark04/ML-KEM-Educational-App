@@ -811,7 +811,7 @@ with tab1:
                   In the key generation procedure, Alice generates a public encapsulation key and a private decapsulation key. She sends the public key over to Bob while keeping the private key secret. To do this, Alice:
                   1. Generates a random seed $d$.
                   2. Uses it to sample a $k \\times k$ matrix $A$ and two small $k \\times 1$ vectors $s$ and $e$, each containing degree-255 polynomials with coefficients in the ring of integers $\mathbb{Z}_{3329}$.
-                  3. Multiplies $t = As + e$ and sends information about $A$ and $t$ to Bob as the public encapsulation key.
+                  3. Multiplies $t = As + e$ and sends information about $t$ and the seed to reconstruct $A$ over to Bob as the public encapsulation key.
                   4. Keeps the secret vector $s$ to use as the decapsulation key.
                   """)
     with col2:
