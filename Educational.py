@@ -6,6 +6,7 @@ import numpy as np
 import secrets
 import hashlib
 from Crypto.Hash import SHAKE128
+import plotly.graph_objects as go
 
 def rounded(x):
     if abs(x % 1) == 0.5:
@@ -2515,5 +2516,5 @@ with tab3:
     fig.update_layout(
         margin=dict(l=0, r=0, t=0, b=0)
     )
-    
+
     st.plotly_chart(fig, use_container_width=True)
