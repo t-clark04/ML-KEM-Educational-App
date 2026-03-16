@@ -2406,7 +2406,13 @@ with tab3:
     st.markdown("## Security of the ML-KEM Cryptosystem")
 
     st.markdown(
-        "In order to understand the security of this quantum-safe key encapsulation mechanism, we must first understand the hard mathematical problem underlying the scheme: Module Learning with Errors (MLWE)."
+        "In order to understand the security of this quantum-safe key encapsulation mechanism, you must first understand the hard mathematical problem underlying the scheme: Module Learning with Errors (MLWE). This tab will, therefore, walk you through the underlying encryption scheme and give you an idea of how difficult it would be for an attacker to break the cryptosystem."
+    )
+
+    st.markdown("### Module Learning with Errors -- Overview")
+
+    st.markdown(
+        "In module learning with errors (MLWE), additive/multiplicative operations take place between *modules*, which are simply vectors whose entries are polynomials in the ring $R_q[X] = \\frac{\mathbb{Z}_q[X]}{(X^N + 1)}$."
     )
 
     fig = go.Figure()
