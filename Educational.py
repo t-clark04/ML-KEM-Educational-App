@@ -2533,18 +2533,17 @@ with tab3:
     draw_square(10.5,-30,1,"x", "Binary Msg", "lightgray", exact = True, hovertext = "Bob's binary message for Alice, treated as binary coefficients in a degree-255 polynomial.")
 
     # --- Axis limits ---
-    fig.update_xaxes(range=[-1, 22], visible=False)
-    fig.update_yaxes(range=[-30.5, 4.5], visible=False)
+    fig.update_xaxes(range=[-1, 22], visible=False, automargin = False)
+    fig.update_yaxes(range=[-30.5, 4.5], visible=False, automargin = False)
 
     # --- Lock aspect ratio so A is square ---
     fig.update_yaxes(scaleanchor="x", scaleratio=1)
 
     # --- Layout size ---
-    fig.update_layout(width=1600, height=2434)
     fig.update_layout(
         margin=dict(l=0, r=0, t=0, b=0),
-        autosize = False,
+        autosize = True,
         plot_bgcolor='red'
     )
 
-    st.plotly_chart(fig, use_container_width=True, theme = None)
+    st.plotly_chart(fig, use_container_width=True, height = 1065, theme = None)
