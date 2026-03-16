@@ -2412,11 +2412,11 @@ with tab3:
     st.markdown("### Module Learning with Errors -- Overview")
 
     st.markdown(
-        "In module learning with errors (MLWE), additive/multiplicative operations take place between *modules*, which are simply vectors whose entries are polynomials in the ring $R_q[X] = \\frac{\mathbb{Z}_q[X]}{(X^N + 1)}$. Polynomials in this ring have coefficients in $\{0,1,2,...,q\}$ and are of degree at most 255 (once you arrive at $x^{256}$, it is reduced modulo $(x^N + 1)$ to become -1). Additions and multiplications in $R_q$ take place modulo $(x^N + 1)$, as well as modulo $q$. A multiplication of this form is more properly known as a negative-wrapped convolution (or a negacyclic convolution)."
+        "In module learning with errors (MLWE), additive/multiplicative operations take place between *modules*, which are simply vectors whose entries are polynomials in the ring $R_q[X] = \\frac{\mathbb{Z}_q[X]}{(X^N + 1)}$. Polynomials in this ring have coefficients in $\{0,1,2,...,q\}$ and are of degree at most 255 ($x^{256}$ is reduced modulo $(x^N + 1)$ to become -1). Additions and multiplications in $R_q$ take place modulo $(x^N + 1)$, as well as modulo $q$. A multiplication of this form is more properly known as a negative-wrapped convolution (or a negacyclic convolution)."
     )
 
     st.markdown(
-        "Test"
+        "Here's the idea. Bob wants to send a message to Alice. Alice starts by generating some variables whose entries are elements from the ring $R_q$. She first generates $A$, which is a $k \\times k$ matrix of polynomials. Then, she generates two $k \\times 1$ vectors, $s$, and $e$, which have small coefficients modulo $q$. The variable $s$ is Alice's *secret* vector, and $e$ is her noise vector. She then calculates $As + e = t$ and sends $(A,t)$ over to Bob as her public key. It is important to note that if $t$ were *equal* to $As$, then $s$ would be very easy to solve using your favorite method for solving matrix equations (e.g. Gaussian elimination, LU decomposition, etc.). **But**, because of the added noise vector $e$, $t = As + e$ becomes very, very, very difficult to solve for $s$ since adding or multiplying rows together ultimately compounds the error!"
     )
 
     fig = go.Figure()
