@@ -2423,6 +2423,10 @@ with tab3:
         "Upon receiving Alice's public key, Bob takes his plaintext message and converts it to binary (a maximum of 256 bits). He leaves the 0s alone but rounds the 1s coefficients to $\\lceil \\frac{q}{2} \\rceil$, and he assigns these values to be the coefficients of a polynomial $\\mu$. He does this because it will eventually allow Alice to separate out the message from the noise. Bob then generates two vectors of polynomials with small coefficients, $y$ (known as the randomizer vector) and $e_1$ (a noise vector), as well as another random *polynomial* with small coefficients, denoted as $e_2$. After that, he calculates $u = A^Ty + e_1$ and $v = t^Ty + e_2 + \\mu$, which are the two ciphertexts that he sends over to Alice. Notice how only $v$ contains information about Bob's original plaintext message (via the polynomial $\\mu$). However, in order for Alice to uncover any information about $\\mu$, she first needs to learn information about the unknown randomizer vector $y$ -- information which can be obtained through $u$."
     )
 
+    st.markdown(
+        "Now, the only person in the world who would be able to solve for $\\mu$ given these two ciphertext variables is Alice. Why? Because she still has her secret vector $s$, of course! As shown in the visualization below, because $t = As + e$, the variable $v$ can be expanded as $s^TA^Ty + e^Ty + e_2 + \\mu$. And if Alice takes her secret vector $s$ and multiplies $s^Tu$, the result is $s^TA^Ty + s^Te_1$. Thus, when she subtracts $v - s^Tu$, $s^TA^Ty$ terms cancel, and she is left with $e^Ty -s^Te_1 + e_2 + \\mu$. Since $e$, $y$, $e_1$, and $e_2$ all have small coefficients, Alice is left with $\\mu + noise$, and because the coefficients of $\\mu$ were rounded in such a way as to allow Alice to separate out the signal from the noise, all she has to do is round! Any coefficients closer to 0 are rounded to 0, and any coefficients closer to $\\lceil \\frac{q}{2} \\rceil$ are rounded to 1. And just like that, she has recovered Bob's binary message!"
+    )
+
     fig = go.Figure()
 
     # --- Alice / KeyGen label ---
