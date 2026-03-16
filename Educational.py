@@ -2412,7 +2412,11 @@ with tab3:
     st.markdown("### Module Learning with Errors -- Overview")
 
     st.markdown(
-        "In module learning with errors (MLWE), additive/multiplicative operations take place between *modules*, which are simply vectors whose entries are polynomials in the ring $R_q[X] = \\frac{\mathbb{Z}_q[X]}{(X^N + 1)}$."
+        "In module learning with errors (MLWE), additive/multiplicative operations take place between *modules*, which are simply vectors whose entries are polynomials in the ring $R_q[X] = \\frac{\mathbb{Z}_q[X]}{(X^N + 1)}$. Polynomials in this ring have coefficients in $\{0,1,2,...,q\}$ and are of degree at most 255 (once you arrive at $x^{256}$, it is reduced modulo $(x^N + 1)$ to become -1). Additions and multiplications in $R_q$ take place modulo $(x^N + 1)$, as well as modulo $q$. A multiplication of this form is more properly known as a negative-wrapped convolution (or a negacyclic convolution)."
+    )
+
+    st.markdown(
+        "Test"
     )
 
     fig = go.Figure()
