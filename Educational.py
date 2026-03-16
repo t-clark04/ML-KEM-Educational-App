@@ -2456,7 +2456,7 @@ with tab3:
 
 
     # --- Public Key Arrow (no text) ---
-    draw_arrow(9.5, 4.5, -1, "Public Key: (A, t)")
+    draw_arrow(9.5, 4.25, -1, "Public Key: (A, t)")
 
     # x ---> μ
     draw_square(11,-3,1,"x", "Binary Msg", "lightgray", hovertext = "Bob's binary message for Alice, treated as binary coefficients in a degree-255 polynomial.", exact = True)
