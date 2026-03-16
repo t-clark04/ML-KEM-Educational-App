@@ -2549,3 +2549,5 @@ with tab3:
 
     with st.expander("**Module Learning with Errors Visualization**"):
         st.plotly_chart(fig, use_container_width=True, theme = None)
+    
+    st.markdown("### Module Learning with Errors as a Lattice Problem")
