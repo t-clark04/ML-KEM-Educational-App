@@ -2403,6 +2403,12 @@ with tab2:
 
 
 with tab3:
+    st.markdown("## Security of the ML-KEM Cryptosystem")
+
+    st.markdown(
+        "In order to understand the security of this quantum-safe key encapsulation mechanism, we must first understand the hard mathematical problem underlying the scheme: Module Learning with Errors (MLWE)."
+    )
+
     fig = go.Figure()
 
     # --- Alice / KeyGen label ---
