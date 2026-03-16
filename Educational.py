@@ -2540,7 +2540,7 @@ with tab3:
     fig.update_yaxes(scaleanchor="x", scaleratio=1)
 
     # --- Layout size ---
-    fig.update_layout(width=1600, height=2500)
+    fig.update_layout(width=1600, height=2434)
     fig.update_layout(
         margin=dict(l=0, r=0, t=0, b=0)
     )
