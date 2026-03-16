@@ -2542,7 +2542,7 @@ with tab3:
     # --- Layout size ---
     fig.update_layout(
         margin=dict(l=0, r=0, t=0, b=0),
-        autosize = True
+        autosize = False
     )
 
     st.plotly_chart(fig, use_container_width=True, height = 1065, theme = None)
