@@ -454,7 +454,7 @@ def draw_arrow(xhead, xtail, y, label):
 
     # --- Label above the arrow ---
     fig.add_annotation(
-        x=(xhead + xtail)/2, y=y + 0.15,           # midpoint of the arrow, slightly above
+        x=(xhead + xtail)/2, y=y + 0.25,           # midpoint of the arrow, slightly above
         text=f"<b>{label}</b>",
         showarrow=False,
         font=dict(size=18),
