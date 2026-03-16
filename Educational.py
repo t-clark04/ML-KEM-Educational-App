@@ -2403,6 +2403,20 @@ with tab2:
 
 
 with tab3:
+    st.markdown("""
+        <style>
+               .block-container {
+                    padding-top: 1rem;
+                    padding-bottom: 0rem;
+                }
+               [data-testid="stVerticalBlock"] > div:has(div.stPlotlyChart) {
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                    margin-top: -20px; /* Adjust this to pull the figure up */
+                }
+        </style>
+        """, unsafe_allow_html=True)
+    
     st.markdown("## Security of the ML-KEM Cryptosystem")
 
     st.markdown(
