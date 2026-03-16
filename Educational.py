@@ -2534,7 +2534,7 @@ with tab3:
 
     # --- Axis limits ---
     fig.update_xaxes(range=[-1, 22], visible=False)
-    fig.update_yaxes(range=[-31, 5], visible=False)
+    fig.update_yaxes(range=[-30.5, 4.5], visible=False)
 
     # --- Lock aspect ratio so A is square ---
     fig.update_yaxes(scaleanchor="x", scaleratio=1)
