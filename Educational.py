@@ -2428,7 +2428,7 @@ with tab3:
     )
 
     st.markdown(
-        "See below for an interactive visualization of the full MLWE process:"
+        "Click the expander below for an interactive visualization of the full MLWE process:"
     )
 
     fig = go.Figure()
@@ -2547,5 +2547,5 @@ with tab3:
         autosize = False
     )
 
-    with st.expander("Ahhhhh!"):
+    with st.expander("Module Learning with Errors Visualization!"):
         st.plotly_chart(fig, use_container_width=True, height = 1065, theme = None)
