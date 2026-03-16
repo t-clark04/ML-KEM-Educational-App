@@ -2541,6 +2541,8 @@ with tab3:
 
     # --- Layout size ---
     fig.update_layout(
+        width = 1600,
+        height = 2434,  
         margin=dict(l=0, r=0, t=0, b=0),
         autosize = False
     )
