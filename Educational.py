@@ -2545,4 +2545,4 @@ with tab3:
         autosize = True
     )
 
-    st.plotly_chart(fig, use_container_width=False, height = 1065, theme = None)
+    st.plotly_chart(fig, use_container_width=True, height = 1065, theme = None)
