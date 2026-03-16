@@ -2403,24 +2403,6 @@ with tab2:
 
 
 with tab3:
-    st.markdown("""
-    <style>
-    /* Remove the gap between elements in the vertical block */
-    [data-testid="stVerticalBlock"] > div {
-        gap: 0rem;
-    }
-    /* Force the Plotly container to have zero padding */
-    [data-testid="stPlotlyChart"] {
-        margin-bottom: -50px; /* Pulls the next element up */
-        margin-top: -50px;    /* Pulls the chart up toward the text */
-    }
-    /* Ensure the iframe itself doesn't have internal padding */
-    iframe {
-        display: block;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    
     st.markdown("## Security of the ML-KEM Cryptosystem")
 
     st.markdown(
@@ -2560,7 +2542,8 @@ with tab3:
     # --- Layout size ---
     fig.update_layout(width=1600, height=2434)
     fig.update_layout(
-        margin=dict(l=0, r=0, t=0, b=0)
+        margin=dict(l=0, r=0, t=0, b=0),
+        autosize = False
     )
 
     st.plotly_chart(fig, use_container_width=True, theme = None)
