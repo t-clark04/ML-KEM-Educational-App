@@ -2424,7 +2424,11 @@ with tab3:
     )
 
     st.markdown(
-        "Now, the only person in the world who would be able to solve for $\\mu$ given these two ciphertext variables is Alice. Why? Because she still has her secret vector $s$, of course! As shown in the visualization below, because $t = As + e$, the variable $v$ can be expanded as $s^TA^Ty + e^Ty + e_2 + \\mu$. And if Alice takes her secret vector $s$ and multiplies $s^Tu$, the result is $s^TA^Ty + s^Te_1$. Thus, when she subtracts $v - s^Tu$, the $s^TA^Ty$ terms cancel, and she is left with $e^Ty -s^Te_1 + e_2 + \\mu$. Since $e$, $y$, $e_1$, and $e_2$ all have small coefficients, Alice is left with $\\mu + noise$, and because the coefficients of $\\mu$ were rounded in such a way as to allow Alice to separate out the signal from the noise, all she has to do is round! Any coefficients closer to 0 are rounded to 0, and any coefficients closer to $\\lceil \\frac{q}{2} \\rceil$ are rounded to 1. And just like that, she has recovered Bob's binary message!"
+        "Now, the only person in the world who would be able to solve for $\\mu$ given these two ciphertext variables is Alice. Why? Because she still has her secret vector $s$, of course! As shown in the visualization below, because $t = As + e$, the variable $v$ can be expanded as $s^TA^Ty + e^Ty + e_2 + \\mu$. And if Alice takes her secret vector $s$ and multiplies $s^Tu$, the result is $s^TA^Ty + s^Te_1$. Thus, when she subtracts $v - s^Tu$, the $s^TA^Ty$ terms cancel out, and she is left with $e^Ty -s^Te_1 + e_2 + \\mu$. Since $e$, $y$, $e_1$, and $e_2$ all have small coefficients, all that is left is essentially $\\mu + noise$, and because the coefficients of $\\mu$ were rounded in such a way as to allow Alice to separate out the signal from the noise, all she has to do is round! Any coefficients closer to 0 are rounded to 0, and any coefficients closer to $\\lceil \\frac{q}{2} \\rceil$ are rounded to 1. And just like that, she has recovered Bob's binary message!"
+    )
+
+    st.markdown(
+        "See below for an interactive visualization of the full MLWE process:"
     )
 
     fig = go.Figure()
@@ -2541,4 +2545,4 @@ with tab3:
         margin=dict(l=0, r=0, t=0, b=0)
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, theme = None)
