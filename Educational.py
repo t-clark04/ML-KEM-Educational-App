@@ -2547,4 +2547,5 @@ with tab3:
         autosize = False
     )
 
-    st.plotly_chart(fig, use_container_width=True, height = 1065, theme = None)
+    with st.expander("Ahhhhh!"):
+        st.plotly_chart(fig, use_container_width=True, height = 1065, theme = None)
