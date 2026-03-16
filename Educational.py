@@ -2403,20 +2403,6 @@ with tab2:
 
 
 with tab3:
-    st.markdown("""
-        <style>
-               .block-container {
-                    padding-top: 1rem;
-                    padding-bottom: 0rem;
-                }
-               [data-testid="stVerticalBlock"] > div:has(div.stPlotlyChart) {
-                    padding-top: 0px;
-                    padding-bottom: 0px;
-                    margin-top: -20px; /* Adjust this to pull the figure up */
-                }
-        </style>
-        """, unsafe_allow_html=True)
-    
     st.markdown("## Security of the ML-KEM Cryptosystem")
 
     st.markdown(
@@ -2554,9 +2540,10 @@ with tab3:
     fig.update_yaxes(scaleanchor="x", scaleratio=1)
 
     # --- Layout size ---
-    fig.update_layout(width=1600, height=2434)
+    #fig.update_layout(width=1600, height=2434)
     fig.update_layout(
-        margin=dict(l=0, r=0, t=0, b=0)
+        margin=dict(l=0, r=0, t=0, b=0),
+        autosize = True, showlegend = False, height = None
     )
 
     st.plotly_chart(fig, use_container_width=True, theme = None)
