@@ -2547,5 +2547,5 @@ with tab3:
         autosize = False
     )
 
-    with st.expander("Module Learning with Errors Visualization!"):
+    with st.expander("**Module Learning with Errors Visualization**"):
         st.plotly_chart(fig, use_container_width=True, theme = None)
