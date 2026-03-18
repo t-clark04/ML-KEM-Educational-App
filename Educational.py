@@ -2567,5 +2567,5 @@ with tab3:
     st.image(
         "images/Closest Vector Problem.png",
         caption = "Simplified illustration of module learning with errors as a closest vector problem.",
-        width = 2000
+        width = 1000
     )
