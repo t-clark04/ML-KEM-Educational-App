@@ -2551,3 +2551,11 @@ with tab3:
         st.plotly_chart(fig, use_container_width=True, theme = None)
     
     st.markdown("### Module Learning with Errors as a Lattice Problem")
+
+    st.markdown(
+        "The best known attack on module learning with errors consists in treating it as a lattice problem. Here's the simplest and most straightforward intuition for how to think about it:"
+    )
+
+    st.markdown(
+        "The public key matrix, $A$, is a $k \\times k$ matrix whose entries are polynomials from the ring $R_q$. In reality, those polynomials are simply represented as the array of their coefficients, so every entry in $A$ contains an array of length $N = 256$. Therefore, although $A$ is technically of size $k \\times k$, if we were to 'flatten' the matrix to only have entries as integers, it would actually be of size $kN \\times kN$. We denote this new matrix as $\\tilde{A}$ and say that $\\tilde{A} \\in \\mathbb{Z}_q^{kN \\times kN}$. The ultimate goal for any attacker is to recover Alice's secret vector *s*, since it would allow them to uncover the binary message from Bob.  "
+    )
