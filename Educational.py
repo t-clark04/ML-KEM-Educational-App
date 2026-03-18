@@ -2564,8 +2564,10 @@ with tab3:
         "Now, let's imagine that we constructed a lattice from the columns of $\\tilde{A}$ (our basis vectors). We'll denote the lattice as $\\mathcal{L}(\\tilde{A})$ and say that $\\mathcal{L}(\\tilde{A}) = \\{ \\tilde{A}z : z \\in \\mathbb{Z}^{kN}\\}$. Under this formulation, every vector $z$ is a candidate 'secret vector', and the vector $\\tilde{A}\\tilde{s}$ is a point somewhere in the lattice. However, the point that the attacker knows is the public key matrix, $\\tilde{t} = \\tilde{A}\\tilde{s} + \\tilde{e}$, which is close to the desired lattice point $\\tilde{A}\\tilde{s}$ but not a lattice point itself. The problem thus becomes to find lattice vector in $\\mathcal{L}(\\tilde{A})$ that is closest to the observed vector $\\tilde{t}$. This problem is more formally known as the Closest Vector Problem (CVP) in cryptography, and a simplified two-dimensional version of it is illustrated below."
     )
 
-    st.image(
-        "images/Closest Vector Problem.png",
-        caption = "Simplified illustration of module learning with errors as a closest vector problem.",
-        width = 1000
-    )
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image(
+            "images/Closest Vector Problem.png",
+            caption = "Simplified illustration of module learning with errors as a closest vector problem.",
+            width = 1000
+        )
