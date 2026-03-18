@@ -2593,3 +2593,5 @@ with tab3:
     st.markdown(
         "As you increase the number of dimensions in the lattice, it turns out that the basis vectors have to be almost perfectly orthogonal for Babai's algorithm to produce the correct closest vector, and in this case, the basis vectors (i.e. the columns) of $\\tilde{A}$ are a high-dimensional mess! So, how do you make the basis vectors more orthogonal? This is a job for *lattice reduction algorithms*. These special algorithms take in a set of 'bad' basis vectors and spit out a set of more orthogonal ones. The most powerful lattice reduction algorithm in the world is the Blockwise Korkine-Zolotarev (BKZ) algorithm. Check out the next section to see how the BKZ would fare in attacking ML-KEM."
     )
+
+    st.markdown("### Why the Attack Fails for ML-KEM")
