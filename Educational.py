@@ -2565,7 +2565,7 @@ with tab3:
     )
 
     st.image(
-        "C:/Users/t_cla/OneDrive/Current Classes/Cryptography Research/Closest Vector Problem.png",
+        "images/Closest Vector Problem.png",
         caption = "Simplified illustration of module learning with errors as a closest vector problem.",
         use_container_width = True
     )
