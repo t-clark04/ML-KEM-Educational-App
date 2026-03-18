@@ -2571,3 +2571,21 @@ with tab3:
             caption = "Simplified illustration of module learning with errors as a closest vector problem.",
             use_container_width = True
         )
+    
+    st.markdown(
+        "There exists an algorithm, known as Babai's Algorithm, which can solve this closest vector problem, but the success of the algorithm depends entirely on the *orthogonality* of the *basis vectors*. The intuition behind this requirement in the simplified case is illustrated below. For any two-dimensional target point, $w$, and basis vectors, $b_1$ and $b_2$, Babai's algorithm finds $t_1$ and $t_2$ such that $w = t_1b_1 + t_2b_2$ and then rounds both $t_1$ and $t_2$ to the nearest integer. Geometrically, this is equivalent to using the basis vectors to draw a parallelogram around the target vector and suggesting the 'closest lattice point' to be the closest vertex in the parallelogram. As shown below, with an orthogonal-enough basis, the algorithm is successful. Otherwise, it fails to identify the closest lattice point."
+    )
+
+    col1, col2, col3, col4 = st.columns([1,2,2,1])
+    with col2:
+        st.image(
+            "images/Good basis.png",
+            caption = "Successfully identifying the closest vector with a 'good' basis.",
+            use_container_width = True
+        )
+    with col3:
+        st.image(
+            "images/Bad basis.png",
+            caption = "Unsuccessfully identifying the closest vector with a 'bad' basis.",
+            use_container_width = True
+        )
