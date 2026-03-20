@@ -4,274 +4,12 @@ from pyvis.network import Network
 import os
 import numpy as np
 import secrets
-import hashlib
-from Crypto.Hash import SHAKE128
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 
 from ML_KEM_utils import rounded, XOF, H, J, G, PRF, BitsToBytes, BytesToBits, Compress, Decompress, ByteEncode, ByteDecode, BitRev7, SampleNTT, SamplePolyCBD, NTT, INTT, BaseCaseMultiply, MultiplyNTTs
-
-
-zetas1 = np.array([1,1729,2580,3289,2642,630,1897,848,1062,
-                 1919,193,797,2786,3260,569,1746,296,2447,
-                 1339,1476,3046,56,2240,1333,1426,2094,535,
-                 2882,2393,2879,1974,821,289,331,3253,1756,
-                 1197,2304,2277,2055,650,1977,2513,632,2865,
-                 33,1320,1915,2319,1435,807,452,1438,2868,
-                 1534,2402,2647,2617,1481,648,2474,3110,
-                 1227,910,17,2761,583,2649,1637,723,2288,
-                 1100,1409,2662,3281,233,756,2156,3015,
-                 3050,1703,1651,2789,1789,1847,952,1461,
-                 2687,939,2308,2437,2388,733,2337,268,641,
-                 1584,2298,2037,3220,375,2549,2090,1645,
-                 1063,319,2773,757,2099,561,2466,2594,2804,
-                 1092,403,1026,1143,2150,2775,886,1722,
-                 1212,1874,1029,2110,2935,885,2154])
-
-zetas2 = np.array([17,-17,2761,-2761,583,-583,2649,-2649,
-                   1637,-1637,723,-723,2288,-2288,1100,
-                   -1100,1409,-1409,2662,-2662,3281,-3281,
-                   233,-233,756,-756,2156,-2156,3015,-3015,
-                   3050,-3050,1703,-1703,1651,-1651,2789,
-                   -2789,1789,-1789,1847,-1847,952,-952, 
-                   1461,-1461,2687,-2687,939,-939,2308,
-                   -2308,2437,-2437,2388,-2388,733,-733,
-                   2337,-2337,268,-268,641,-641,1584,-1584,
-                   2298,-2298,2037,-2037,3220,-3220,375,
-                   -375,2549,-2549,2090,-2090,1645,-1645,1063,
-                   -1063,319,-319,2773,-2773,757,-757,2099,
-                   -2099,561,-561,2466,-2466,2594,-2594, 2804,
-                   -2804,1092,-1092,403,-403,1026,-1026, 1143,
-                   -1143,2150,-2150,2775,-2775,886,-886, 1722,
-                   -1722,1212,-1212,1874,-1874,1029,-1029,
-                   2110,-2110,2935,-2935,885,-885,2154,-2154])
-
-def draw_square(x0, y0, size, mid_label, upper_label, color, hovertext = "", exact = True):
-    fig.add_shape(
-    type="rect",
-    x0=x0, y0=y0, x1=x0 + size, y1=y0 + size,
-    fillcolor= color,
-    line=dict(color="black")
-    )
-    
-    fig.add_annotation(
-    x=x0 + size/2, y=y0 + size/2,
-    text=f"<b>{mid_label}</b>",
-    showarrow=False,
-    font=dict(size=26)
-    )
-    
-    fig.add_annotation(
-    x=x0 + size/2, y=y0 + size + 0.2,
-    text=f"{upper_label}",
-    showarrow=False,
-    font=dict(size=18),
-    xanchor="center",
-    yanchor="bottom"
-    )
-
-    if exact == True:
-        text = f"{size} x {size}"
-    else:
-        text=f"k × k"
-
-    fig.add_annotation(
-    x=x0 + size/2, y=y0 - 0.2,
-    text = text,
-    showarrow=False,
-    font=dict(size=18),
-    xanchor="center",
-    yanchor="top"
-    )
-
-    fig.add_trace(go.Scatter(
-        x=[x0 + size / 2],
-        y=[y0 + size / 2],
-        mode="markers",
-        marker=dict(
-            size=size * 40,   # scale to cover the shape
-            color="rgba(0,0,0,0)",
-            symbol="square",
-        ),
-        hovertemplate=f"<b>{mid_label}</b><br>{hovertext}<extra></extra>",
-        showlegend=False,
-    ))
-
-
-def draw_rectangle(x0, y0, size, mid_label, upper_label, color, hovertext = ""):
-    fig.add_shape(
-    type="rect",
-    x0=x0, y0=y0, x1=x0 + 1, y1=y0 + size,
-    fillcolor= color,
-    line=dict(color="black")
-    )
-    
-    fig.add_annotation(
-    x=x0 + 0.5, y=y0 + size/2,
-    text=f"<b>{mid_label}</b>",
-    showarrow=False,
-    font=dict(size=26)
-    )
-    
-    fig.add_annotation(
-    x=x0 + 0.5, y=y0 + size + 0.2,
-    text=f"{upper_label}",
-    showarrow=False,
-    font=dict(size=18),
-    xanchor="center",
-    yanchor="bottom"
-    )
-
-    fig.add_annotation(
-    x=x0 + 0.5, y=y0 - 0.2,
-    text=f"k × 1",
-    showarrow=False,
-    font=dict(size=18),
-    xanchor="center",
-    yanchor="top"
-    )
-
-    fig.add_trace(go.Scatter(
-        x=[x0],
-        y=[y0 + size / 2],
-        mode="markers",
-        marker=dict(
-            size=size * 40,   # scale to cover the shape
-            color="rgba(0,0,0,0)",
-            symbol="square",
-        ),
-        hovertemplate=f"<b>{mid_label}</b><br>{hovertext}<extra></extra>",
-        showlegend=False,
-    ))
-
-def draw_rectangle_horiz(x0, y0, size, mid_label, upper_label, color, hovertext = ""):
-    fig.add_shape(
-    type="rect",
-    x0=x0, y0=y0, x1=x0 + size, y1=y0 + 1,
-    fillcolor= color,
-    line=dict(color="black")
-    )
-    
-    fig.add_annotation(
-    x=x0 + size/2, y=y0 + 0.5,
-    text=f"<b>{mid_label}</b>",
-    showarrow=False,
-    font=dict(size=26)
-    )
-    
-    fig.add_annotation(
-    x=x0 + size/2, y=y0 + 1.2,
-    text=f"{upper_label}",
-    showarrow=False,
-    font=dict(size=18),
-    xanchor="center",
-    yanchor="bottom"
-    )
-
-    fig.add_annotation(
-    x=x0 + size/2, y=y0 - 0.2,
-    text=f"1 × k",
-    showarrow=False,
-    font=dict(size=18),
-    xanchor="center",
-    yanchor="top"
-    )
-
-    fig.add_trace(go.Scatter(
-        x=[x0 + size / 2],
-        y=[y0 + 0.5],
-        mode="markers",
-        marker=dict(
-            size=size * 40,   # scale to cover the shape
-            color="rgba(0,0,0,0)",
-            symbol="square",
-        ),
-        hovertemplate=f"<b>{mid_label}</b><br>{hovertext}<extra></extra>",
-        showlegend=False,
-    ))
-
-def draw_plus(x,y):
-    fig.add_annotation(
-        x=x, y=y,
-        text="+",
-        showarrow=False,
-        font=dict(size=30),
-        xanchor="center",
-        yanchor="middle"
-    )
-
-def draw_minus(x,y):
-    fig.add_annotation(
-        x=x, y=y,
-        text="-",
-        showarrow=False,
-        font=dict(size=30),
-        xanchor="center",
-        yanchor="middle"
-    )
-
-def draw_equals(x,y):
-    fig.add_annotation(
-        x=x, y=y,
-        text="=",
-        showarrow=False,
-        font=dict(size=30),
-        xanchor="center",
-        yanchor="middle"
-    )
-
-def draw_arrow(xhead, xtail, y, label):
-    fig.add_annotation(
-    x=xhead, y=y,          # arrow head near Bob
-    ax=xtail, ay=y,        # arrow tail near Alice
-    xref="x", yref="y",
-    axref="x", ayref="y",
-    text="",
-    showarrow=True,
-    arrowhead=3,
-    arrowsize=1.5,
-    arrowwidth=2
-    )
-
-    # --- Label above the arrow ---
-    fig.add_annotation(
-        x=(xhead + xtail)/2, y=y + 0.25,           # midpoint of the arrow, slightly above
-        text=f"<b>{label}</b>",
-        showarrow=False,
-        font=dict(size=18),
-        xanchor="center"
-    )
-
-def add_header(x,y,label):
-    fig.add_annotation(
-    x=x, y=y,          # above A block
-    text=f"<b><u>{label}</u></b>",
-    showarrow=False,
-    font=dict(size=24, color="black"),
-    xanchor="center",
-    yanchor="bottom"
-    )
-
-def add_subheader(x,y,label):
-    fig.add_annotation(
-    x=x, y=y,          # sublabel just below "Alice"
-    text=f"<u>{label}</u>",
-    showarrow=False,
-    font=dict(size=18, color="black"),
-    xanchor="center",
-    yanchor="bottom"
-    )
-
-def draw_approx(x,y):
-        fig.add_annotation(
-        x=x, y=y,
-        text="≈",
-        showarrow=False,
-        font=dict(size=30),
-        xanchor="center",
-        yanchor="middle"
-    )
+from ML_KEM_graphs import draw_square, draw_rectangle, draw_rectangle_horiz, draw_plus, draw_minus, draw_equals, draw_arrow, add_header, add_subheader, draw_approx
 
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
@@ -2216,103 +1954,103 @@ with tab3:
     fig = go.Figure()
 
     # --- Alice / KeyGen label ---
-    add_header(0.5,4.5, "Alice")
+    add_header(fig, 0.5,4.5, "Alice")
 
-    add_subheader(0.85,3.75, "Key Generation")
+    add_subheader(fig,0.85,3.75, "Key Generation")
 
     # --- Bob label (right side, can add blocks later) ---
-    add_header(11.5,4.5, "Bob")
+    add_header(fig,11.5,4.5, "Bob")
 
-    add_subheader(11.5,-1.25, "Encryption")
+    add_subheader(fig,11.5,-1.25, "Encryption")
 
     # -----------------------
     # --- Alice Blocks ---
     # -----------------------
     # As + e = t
-    draw_square(0,0,3,"A", "Public Key Matrix", "lightblue", hovertext = "Public key matrix of size k x k. Each entry contains a degree-255 polynomial sampled from R<sub>q</sub>.",exact = False)
-    draw_rectangle(3.5,0,3,"s", "Secret Vector", "lightgreen", hovertext = "Alice's k x 1 secret vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_plus(5, 1.5)
-    draw_rectangle(5.5,0,3,"e", "Noise", "pink", hovertext = "A k x 1 noise vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_equals(7,1.5)
-    draw_rectangle(7.5,0,3,"t", "Public Vector", "orange", hovertext = "Public key vector of size k x 1. Each entry contains a degree-255 polynomial from R<sub>q</sub>.")
+    draw_square(fig,0,0,3,"A", "Public Key Matrix", "lightblue", hovertext = "Public key matrix of size k x k. Each entry contains a degree-255 polynomial sampled from R<sub>q</sub>.",exact = False)
+    draw_rectangle(fig,3.5,0,3,"s", "Secret Vector", "lightgreen", hovertext = "Alice's k x 1 secret vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,5, 1.5)
+    draw_rectangle(fig,5.5,0,3,"e", "Noise", "pink", hovertext = "A k x 1 noise vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_equals(fig,7,1.5)
+    draw_rectangle(fig,7.5,0,3,"t", "Public Vector", "orange", hovertext = "Public key vector of size k x 1. Each entry contains a degree-255 polynomial from R<sub>q</sub>.")
 
 
     # --- Public Key Arrow (no text) ---
-    draw_arrow(9.5, 4.5, -1.25, "Public Key: (A, t)")
+    draw_arrow(fig,9.5, 4.5, -1.25, "Public Key: (A, t)")
 
     # x ---> μ
-    draw_square(11,-3,1,"x", "Binary Msg", "lightgray", hovertext = "Bob's binary message for Alice, treated as binary coefficients in a degree-255 polynomial.", exact = True)
-    draw_arrow(13.5, 12.5, -2.5, "round")
-    draw_square(14, -3,1, "μ", "Rounded Msg", "lightyellow", hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.", exact = True)
+    draw_square(fig,11,-3,1,"x", "Binary Msg", "lightgray", hovertext = "Bob's binary message for Alice, treated as binary coefficients in a degree-255 polynomial.", exact = True)
+    draw_arrow(fig,13.5, 12.5, -2.5, "round")
+    draw_square(fig,14, -3,1, "μ", "Rounded Msg", "lightyellow", hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.", exact = True)
 
     # A^T y + e_1 = u
-    draw_square(11, -7.5,3,"A<sup>T</sup>", "Public Key Matrix", "lightblue", hovertext = "Public key matrix of size k x k. Each entry contains a degree-255 polynomial sampled from R<sub>q</sub>.", exact = False)
-    draw_rectangle(14.5,-7.5,3,"y", "Randomizer", "lavender", hovertext = "A k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_plus(16, -6)
-    draw_rectangle(16.5,-7.5,3,"e<sub>1</sub>", "Noise", "aquamarine", hovertext = "A k x 1 noise vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_equals(18,-6)
-    draw_rectangle(18.5,-7.5,3,"u", "Ciphertext", "wheat", hovertext = "The first part of Bob's ciphertext: a k x 1 vector. Each entry contains a degree-255 polynomial from R<sub>q</sub>.")
+    draw_square(fig,11, -7.5,3,"A<sup>T</sup>", "Public Key Matrix", "lightblue", hovertext = "Public key matrix of size k x k. Each entry contains a degree-255 polynomial sampled from R<sub>q</sub>.", exact = False)
+    draw_rectangle(fig,14.5,-7.5,3,"y", "Randomizer", "lavender", hovertext = "A k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,16, -6)
+    draw_rectangle(fig,16.5,-7.5,3,"e<sub>1</sub>", "Noise", "aquamarine", hovertext = "A k x 1 noise vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_equals(fig,18,-6)
+    draw_rectangle(fig,18.5,-7.5,3,"u", "Ciphertext", "wheat", hovertext = "The first part of Bob's ciphertext: a k x 1 vector. Each entry contains a degree-255 polynomial from R<sub>q</sub>.")
 
     # t^T y + e_2 + μ = v
-    draw_rectangle_horiz(11, -11, 3, "t<sup>T</sup>", "Public Vector", "orange", hovertext = "The transpose of Alice's original public key vector.")
-    draw_rectangle(14.5,-12,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_plus(16, -10.5)
-    draw_square(16.5,-11,1,"e<sub>2</sub>", "Noise", "green", exact = True, hovertext = "A noise polynomial. A single polynomial from R<sub>q</sub> with small coefficients.")
-    draw_plus(18, -10.5)
-    draw_square(18.5, -11,1, "μ", "Rounded Msg", "lightyellow", exact = True, hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.")
-    draw_equals(20,-10.5)
-    draw_square(20.5,-11,1,"v", "Ciphertext", "tomato", exact = True, hovertext = "The second part of Bob's ciphertext: a single polynomial from R<sub>q</sub>.")
+    draw_rectangle_horiz(fig,11, -11, 3, "t<sup>T</sup>", "Public Vector", "orange", hovertext = "The transpose of Alice's original public key vector.")
+    draw_rectangle(fig,14.5,-12,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,16, -10.5)
+    draw_square(fig,16.5,-11,1,"e<sub>2</sub>", "Noise", "green", exact = True, hovertext = "A noise polynomial. A single polynomial from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,18, -10.5)
+    draw_square(fig,18.5, -11,1, "μ", "Rounded Msg", "lightyellow", exact = True, hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.")
+    draw_equals(fig,20,-10.5)
+    draw_square(fig,20.5,-11,1,"v", "Ciphertext", "tomato", exact = True, hovertext = "The second part of Bob's ciphertext: a single polynomial from R<sub>q</sub>.")
 
     # --- Ciphertext arrow ----
-    draw_arrow(4.5, 9.5, -13, "Ciphertext: (u, v)")
-    add_subheader(0.85,-13.25, "Decapsulation")
+    draw_arrow(fig,4.5, 9.5, -13, "Ciphertext: (u, v)")
+    add_subheader(fig,0.85,-13.25, "Decapsulation")
 
     # s^T u  = s^T A^T y + s^T e_1
-    draw_rectangle_horiz(0, -16, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
-    draw_rectangle(3.5,-17,3,"u", "Ciphertext", "wheat", "The first part of Bob's ciphertext: a k x 1 vector. Each entry contains a degree-255 polynomial from R<sub>q</sub>.")
-    draw_equals(5,-15.5)
-    draw_rectangle_horiz(5.5, -16, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
-    draw_square(9, -17,3,"A<sup>T</sup>", "Public Key Matrix", "lightblue", hovertext = "Public key matrix of size k x k. Each entry contains a degree-255 polynomial sampled from R<sub>q</sub>.", exact = False)
-    draw_rectangle(12.5,-17,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_plus(14, -15.5)
-    draw_rectangle_horiz(14.5, -16, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
-    draw_rectangle(18,-17,3,"e<sub>1</sub>", "Noise", "aquamarine", hovertext = "A k x 1 noise vector generated by Bob. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_rectangle_horiz(fig,0, -16, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
+    draw_rectangle(fig,3.5,-17,3,"u", "Ciphertext", "wheat", "The first part of Bob's ciphertext: a k x 1 vector. Each entry contains a degree-255 polynomial from R<sub>q</sub>.")
+    draw_equals(fig,5,-15.5)
+    draw_rectangle_horiz(fig,5.5, -16, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
+    draw_square(fig,9, -17,3,"A<sup>T</sup>", "Public Key Matrix", "lightblue", hovertext = "Public key matrix of size k x k. Each entry contains a degree-255 polynomial sampled from R<sub>q</sub>.", exact = False)
+    draw_rectangle(fig,12.5,-17,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,14, -15.5)
+    draw_rectangle_horiz(fig,14.5, -16, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
+    draw_rectangle(fig,18,-17,3,"e<sub>1</sub>", "Noise", "aquamarine", hovertext = "A k x 1 noise vector generated by Bob. Entries are polynomials from R<sub>q</sub> with small coefficients.")
 
     # v = s^T A^T y + e^T y + e_2 + μ
-    draw_square(0,-21,1,"v", "Ciphertext", "tomato", exact = True, hovertext = "The second part of Bob's ciphertext: a single polynomial from R<sub>q</sub>.")
-    draw_equals(1.5,-20.5)
-    draw_rectangle_horiz(2, -21, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
-    draw_square(5.5, -22,3,"A<sup>T</sup>", "Public Key Matrix", "lightblue", hovertext = "Public key matrix of size k x k. Each entry contains a degree-255 polynomial sampled from R<sub>q</sub>.", exact = False)
-    draw_rectangle(9,-22,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_plus(10.5, -20.5)
-    draw_rectangle_horiz(11,-21,3,"e<sup>T</sup>", "Noise", "pink", hovertext = "Transpose of Alice's k x 1 noise vector from the key generation step.")
-    draw_rectangle(14.5,-22,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_plus(16, -20.5)
-    draw_square(16.5,-21,1,"e<sub>2</sub>", "Noise", "green", exact = True, hovertext = "Bob's noise polynomial. A single polynomial from R<sub>q</sub> with small coefficients.")
-    draw_plus(18, -20.5)
-    draw_square(18.5, -21 ,1, "μ", "Rounded Msg", "lightyellow", exact = True, hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.")
+    draw_square(fig,0,-21,1,"v", "Ciphertext", "tomato", exact = True, hovertext = "The second part of Bob's ciphertext: a single polynomial from R<sub>q</sub>.")
+    draw_equals(fig,1.5,-20.5)
+    draw_rectangle_horiz(fig,2, -21, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
+    draw_square(fig,5.5, -22,3,"A<sup>T</sup>", "Public Key Matrix", "lightblue", hovertext = "Public key matrix of size k x k. Each entry contains a degree-255 polynomial sampled from R<sub>q</sub>.", exact = False)
+    draw_rectangle(fig,9,-22,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,10.5, -20.5)
+    draw_rectangle_horiz(fig,11,-21,3,"e<sup>T</sup>", "Noise", "pink", hovertext = "Transpose of Alice's k x 1 noise vector from the key generation step.")
+    draw_rectangle(fig,14.5,-22,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,16, -20.5)
+    draw_square(fig,16.5,-21,1,"e<sub>2</sub>", "Noise", "green", exact = True, hovertext = "Bob's noise polynomial. A single polynomial from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,18, -20.5)
+    draw_square(fig,18.5, -21 ,1, "μ", "Rounded Msg", "lightyellow", exact = True, hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.")
 
     # v - s^T u = e^T y - s^T e_1 + e_2 + μ
-    draw_square(0,-26,1,"v", "Ciphertext", "tomato", exact = True, hovertext = "The second part of Bob's ciphertext: a single polynomial from R<sub>q</sub>.")
-    draw_minus(1.5, -25.5)
-    draw_rectangle_horiz(2, -26, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
-    draw_rectangle(5.5,-27,3,"u", "Ciphertext", "wheat", hovertext = "The first part of Bob's ciphertext: a k x 1 vector. Each entry contains a degree-255 polynomial from R<sub>q</sub>.")
-    draw_equals(7, -25.5) 
-    draw_rectangle_horiz(7.5,-26,3,"e<sup>T</sup>", "Noise", "pink", hovertext = "Transpose of Alice's k x 1 noise vector from the key generation step.")
-    draw_rectangle(11,-27,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_minus(12.5,-25.5)
-    draw_rectangle_horiz(13, -26, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
-    draw_rectangle(16.5,-27,3,"e<sub>1</sub>", "Noise", "aquamarine", hovertext = "A k x 1 noise vector generated by Bob. Entries are polynomials from R<sub>q</sub> with small coefficients.")
-    draw_plus(18,-25.5)
-    draw_square(18.5,-26,1,"e<sub>2</sub>", "Noise", "green", exact = True, hovertext = "Bob's noise polynomial. A single polynomial from R<sub>q</sub> with small coefficients")
-    draw_plus(20, -25.5)
-    draw_square(20.5, -26 ,1, "μ", "Rounded Msg", "lightyellow", exact = True, hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.")
+    draw_square(fig,0,-26,1,"v", "Ciphertext", "tomato", exact = True, hovertext = "The second part of Bob's ciphertext: a single polynomial from R<sub>q</sub>.")
+    draw_minus(fig,1.5, -25.5)
+    draw_rectangle_horiz(fig,2, -26, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
+    draw_rectangle(fig,5.5,-27,3,"u", "Ciphertext", "wheat", hovertext = "The first part of Bob's ciphertext: a k x 1 vector. Each entry contains a degree-255 polynomial from R<sub>q</sub>.")
+    draw_equals(fig,7, -25.5) 
+    draw_rectangle_horiz(fig,7.5,-26,3,"e<sup>T</sup>", "Noise", "pink", hovertext = "Transpose of Alice's k x 1 noise vector from the key generation step.")
+    draw_rectangle(fig,11,-27,3,"y", "Randomizer", "lavender", hovertext = "Bob's k x 1 randomizer vector. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_minus(fig,12.5,-25.5)
+    draw_rectangle_horiz(fig,13, -26, 3, "s<sup>T</sup>", "Secret Vector", "lightgreen", hovertext = "The transpose of Alice's secret vector from the key generation step.")
+    draw_rectangle(fig,16.5,-27,3,"e<sub>1</sub>", "Noise", "aquamarine", hovertext = "A k x 1 noise vector generated by Bob. Entries are polynomials from R<sub>q</sub> with small coefficients.")
+    draw_plus(fig,18,-25.5)
+    draw_square(fig,18.5,-26,1,"e<sub>2</sub>", "Noise", "green", exact = True, hovertext = "Bob's noise polynomial. A single polynomial from R<sub>q</sub> with small coefficients")
+    draw_plus(fig,20, -25.5)
+    draw_square(fig,20.5, -26 ,1, "μ", "Rounded Msg", "lightyellow", exact = True, hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.")
 
     # approx μ ---> (Compress) x
-    draw_approx(7, -29.5)
-    draw_square(7.5, -30,1, "μ", "Rounded Msg", "lightyellow", exact = True, hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.")
-    draw_arrow(10, 9, -29.5, "Compress")
-    draw_square(10.5,-30,1,"x", "Binary Msg", "lightgray", exact = True, hovertext = "Bob's binary message for Alice, treated as binary coefficients in a degree-255 polynomial.")
+    draw_approx(fig,7, -29.5)
+    draw_square(fig,7.5, -30,1, "μ", "Rounded Msg", "lightyellow", exact = True, hovertext = "Bob's polynomial message, with coefficients rewritten using the mapping: {0:0, 1: ⌈q/2⌉}.")
+    draw_arrow(fig,10, 9, -29.5, "Compress")
+    draw_square(fig,10.5,-30,1,"x", "Binary Msg", "lightgray", exact = True, hovertext = "Bob's binary message for Alice, treated as binary coefficients in a degree-255 polynomial.")
 
     # --- Axis limits ---
     fig.update_xaxes(range=[-1, 22], visible=False, automargin = False)
