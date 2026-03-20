@@ -2630,10 +2630,10 @@ with tab3:
     )
 
     # Optionally, you can customize hovertemplate for more control
-   # fig.update_traces(
-   #     marker=dict(size=10, color='blue'),
-   #     hovertemplate="<b>Dimension:</b> %{x}<br><b>Beta:</b> %{y}<br><b>Time:</b> %{hovertext}<extra></extra>"
-   # )
+    fig.update_traces(
+        marker=dict(size=10, color='blue'),
+        hovertemplate="<b>Dimension:</b> %{x}<br><b>Beta:</b> %{y}<br><b>Time:</b> %{hovertext}<extra></extra>"
+    )
 
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
