@@ -6,7 +6,6 @@ import numpy as np
 import secrets
 import plotly.graph_objects as go
 import plotly.express as px
-import pandas as pd
 
 from ML_KEM_utils import rounded, XOF, H, J, G, PRF, BitsToBytes, BytesToBits, Compress, Decompress, ByteEncode, ByteDecode, BitRev7, SampleNTT, SamplePolyCBD, NTT, INTT, BaseCaseMultiply, MultiplyNTTs
 from ML_KEM_graphs import draw_square, draw_rectangle, draw_rectangle_horiz, draw_plus, draw_minus, draw_equals, draw_arrow, add_header, add_subheader, draw_approx

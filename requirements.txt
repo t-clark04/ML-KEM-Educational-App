@@ -3,4 +3,3 @@ pycryptodome==3.23.0
 pyvis==0.3.2
 streamlit==1.51.0
 plotly==5.22.0
-pandas==1.5.3
