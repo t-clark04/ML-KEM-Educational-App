@@ -2595,3 +2595,17 @@ with tab3:
     )
 
     st.markdown("### Why the Attack Fails for ML-KEM")
+
+    st.markdown("As it turns out, the most effective way to solve this closest vector problem (CVP) is by converting it into a shortest vector problem (SVP) of a slightly higher lattice dimension. Whereas the CVP is based on finding the closest lattice point to a vector that is not in the lattice, the SVP relies more generally on finding the shortest vector in the lattice. Oftentimes, a short *enough* vector can solve the *approximate* shortest vector problem (aSVP), which is what the Blockwise Korkine-Zolotarev (BKZ) algorithm specializes in. The BKZ remains the gold standard for solving the aSVP, and it could, in theory, break MLWE.")
+
+    st.markdown(
+        "Without getting to far into the weeds of how the BKZ works under the hood, the algorithm calls on an SVP oracle to solve the exact shortest vector problem on a lattice of block size, $\\beta$. The larger the value of $\\beta$, the better job the algorithm does at finding the shortest vector in the lattice MLWE. However, it takes a larger number of operations, and thus, a longer amount of time to do so. Because of this accuracy-time tradeoff, for any given lattice size, there is an optimal block size for breaking the MLWE cryptosystem. We can think of it as the minimum block size that the BKZ would need to have a high probability of breaking MLWE without doing more operations than necessary."
+    )
+
+    st.markdown(
+        "While quantum algorithms (namely Shor's Algorithm) already exist which will allow attackers with quantum computers to break some of the key encryption schemes in use today, such as RSA and Diffie Hellman, there are currently **no* quantum algorithms that would be able to speed up this shortest vector attack and solve MLWE more efficiently, nor is there expected to be one anytime soon. This is what makes ML-KEM a *quantum-resistant* key encapsulation mechanism. Still, to get a sense of how difficult it would be to solve MLWE in the dimensions of ML-KEM's approved parameter sets, we can use the most powerful classical computer in the world -- El Capitan supercomputer -- as a benchmark."
+    )
+
+    st.markdown(
+        "The interactive scatterplot below displays the optimal block size, $\\beta$, to break a MLWE instance of lattice size $n$. Hovering over a data point also shows the approximate amount of time it would take El Capitan to break it."
+    )
