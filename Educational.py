@@ -1776,7 +1776,7 @@ with tab2:
             "🚀 Start Key Generation", 
             on_click=lambda: start_walkthrough('KeyGen'), 
             type="primary",
-            use_container_width=True
+            width="stretch"
         )
 
     if st.session_state.walkthrough_phase != 'None':
@@ -1784,7 +1784,7 @@ with tab2:
             "🔄 Reset All", 
             on_click=reset_walkthrough, 
             type="secondary",
-            use_container_width=True,
+            width = "stretch",
             help="Reset walkthrough and clear all intermediate cryptographic data."
         )
 
@@ -1894,7 +1894,7 @@ with tab2:
             "⬅️ Previous Step", 
             on_click=previous_step, 
             disabled=(current_step_index == 0 and current_phase == 'KeyGen'),
-            use_container_width=True,
+            width = "stretch",
             help="Go back to the previous step in the current process."
         )
         
@@ -1917,7 +1917,7 @@ with tab2:
             on_click=next_step, 
             disabled=next_disabled, 
             type="primary",
-            use_container_width=True,
+            width = "stretch",
             help="Advance to the next step or the next walkthrough phase."
         )
 
@@ -2068,7 +2068,7 @@ with tab3:
     )
 
     with st.expander("**Module Learning with Errors Visualization**"):
-        st.plotly_chart(fig, use_container_width=True, theme = None)
+        st.plotly_chart(fig, width = "stretch", theme = None)
     
     st.markdown("### Module Learning with Errors as a Lattice Problem")
 
@@ -2089,7 +2089,7 @@ with tab3:
         st.image(
             "images/Closest Vector Problem.png",
             caption = "Simplified illustration of module learning with errors as a closest vector problem.",
-            use_container_width = True
+            width = "stretch"
         )
     
     st.markdown(
@@ -2101,13 +2101,13 @@ with tab3:
         st.image(
             "images/Good basis.png",
             caption = "Successfully identifying the closest vector with a 'good' basis.",
-            use_container_width = True
+            width = "stretch"
         )
     with col3:
         st.image(
             "images/Bad basis.png",
             caption = "Unsuccessfully identifying the closest vector with a 'bad' basis.",
-            use_container_width = True
+            width = "stretch"
         )
     
     st.markdown(
