@@ -2194,6 +2194,5 @@ with tab3:
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
         st.plotly_chart(fig, use_container_width=True)
-
-    with st.expander("Where do these values come from?"):
-        st.markdown("Blah blah blah")
+        with st.expander("Where do these values come from?"):
+            st.markdown("Blah blah blah")
