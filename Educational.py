@@ -2068,7 +2068,7 @@ with tab3:
     )
 
     with st.expander("**Module Learning with Errors Visualization**"):
-        st.plotly_chart(fig, width = "stretch", height = 600, theme = None)
+        st.plotly_chart(fig, width = "stretch", height = 500, theme = None)
     
     st.markdown("### Module Learning with Errors as a Lattice Problem")
 
