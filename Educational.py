@@ -2132,7 +2132,7 @@ with tab3:
 
     dimension = [100, 200, 300, 400, 500, 512, 600, 700, 768, 800, 900, 1000, 1024, 1100]
     beta = [40, 116, 205, 298, 394, 406, 492, 591, 660, 692, 794, 897, 922, 1001]
-    time = ["2.85 femtoseconds", "13.6 nanoseconds", "0.908 seconds", "4.05 years", "1.11 billion years", "12.6 billion years", "457 quadrillion years (33 million times the age of the universe)", "230 septillion years (16.7 quadrillion times the age of the universe)", "267 nonillion years (19.4 sextillion times the age of the universe)", "174 decillion years (12.6 septillion times the age of the universe)", "16.1 tredecillion years (11.6 undecillion times the age of the universe)", "182 sexdecillion years (1.32 tredecillion times the age of the universe)", "286 septendecillion years (2.08 quattuordecillion times the age of the universe)", "252 vigintillion (18.3 sexdecillion times the age of the universe)"]
+    time = ["2.85 femtoseconds", "13.6 nanoseconds", "0.908 seconds", "4.05 years", "1.11 billion years", "12.6 billion years", "457 quadrillion years (33 million times the age of the universe)", "230 septillion years (16.7 quadrillion times the age of the universe)", "267 nonillion years (19.4 sextillion times the age of the universe)", "174 decillion years (12.6 septillion times the age of the universe)", "16.1 tredecillion years (11.6 undecillion times the age of the universe)", "182 sexdecillion years (1.32 tredecillion times the age of the universe)", "286 septendecillion years (2.08 quattuordecillion times the age of the universe)", "252 vigintillion years (18.3 sexdecillion times the age of the universe)"]
     df = pd.DataFrame({
         "Dimension": dimension,
         "Beta": beta,
