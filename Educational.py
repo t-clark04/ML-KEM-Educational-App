@@ -6,6 +6,7 @@ import numpy as np
 import secrets
 import plotly.graph_objects as go
 import plotly.express as px
+import pandas as pd
 
 from ML_KEM_utils import rounded, XOF, H, J, G, PRF, BitsToBytes, BytesToBits, Compress, Decompress, ByteEncode, ByteDecode, BitRev7, SampleNTT, SamplePolyCBD, NTT, INTT, BaseCaseMultiply, MultiplyNTTs
 from ML_KEM_graphs import draw_square, draw_rectangle, draw_rectangle_horiz, draw_plus, draw_minus, draw_equals, draw_arrow, add_header, add_subheader, draw_approx
@@ -2132,16 +2133,17 @@ with tab3:
     dimension = [100, 200, 300, 400, 500, 512, 600, 700, 768, 800, 900, 1000, 1024, 1100]
     beta = [40, 116, 205, 298, 394, 406, 492, 591, 660, 692, 794, 897, 922, 1001]
     time = ["2.85 x 10^-15 seconds (or 3 femtoseconds)", "1.36 x 10^-8 (or 13.6 nanoseconds)", "0.908 seconds", "4.05 years", "1.11 billion years", "12.6 billion years", "457 quadrillion years (33 million times the age of the universe)", "230 septillion years (16.7 quadrillion times the age of the universe)", "267 nonillion years (19.4 sextillion times the age of the universe)", "174 decillion years (12.6 septillion times the age of the universe)", "16.1 tredecillion years (11.6 undecillion times the age of the universe)", "182 sexdecillion years (1.32 tredecillion times the age of the universe)", "286 septendecillion years (2.08 quattuordecillion times the age of the universe)", "252 vigintillion (18.3 sexdecillion times the age of the universe)"]
-    # df = pd.DataFrame({
-    #     "Dimension": dimension,
-    #     "Beta": beta,
-    #     "Time": time
-    # })
+    df = pd.DataFrame({
+        "Dimension": dimension,
+        "Beta": beta,
+        "Time": time
+    })
     fig = px.scatter(
-          x=dimension,
-          y=beta,
-          #hover_name="Time",   # Shows 'Time' when hovering
-          title="How Long Would It Take to Break Module Learning with Errors?",
+        df,
+        x="Dimension",
+        y="Beta",
+        hover_name="Time",   # Shows 'Time' when hovering
+        title="How Long Would It Take to Break Module Learning with Errors?",
       )
 
     # # Optionally, you can customize hovertemplate for more control
