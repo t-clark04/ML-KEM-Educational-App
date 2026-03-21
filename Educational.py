@@ -2158,7 +2158,7 @@ with tab3:
             line_dash="dash", 
             line_color="red",
             annotation_text=label,
-            annotation_position="top left",
+            annotation_position="bottom left",
             annotation_font_size=14,
             annotation_font_color="red",
             annotation_textangle=-90  # Rotates the text to stand vertically
@@ -2182,7 +2182,7 @@ with tab3:
     # 3. Centering Title and Label Sizes (from previous step)
     fig.update_layout(
         title={
-            'text': "How Long Would It Take to Break Module Learning with Errors?",
+            'text': "Breaking MLWE: Lattice Dimension, Block Size, and Runtime",
             'x': 0.5,
             'xanchor': 'center',
             'font': {'size': 20}
