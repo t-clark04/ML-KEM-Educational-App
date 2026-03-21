@@ -2063,12 +2063,12 @@ with tab3:
     fig.update_layout(
         width = 1600,
         height = 2434,  
-        margin=dict(l=0, r=0, t=0, b=0),
+        margin=dict(l=0, r=0, t=100, b=0),
         autosize = False
     )
 
     with st.expander("**Module Learning with Errors Visualization**"):
-        st.plotly_chart(fig, width = "stretch", height = 500, theme = None)
+        st.plotly_chart(fig, width = "stretch", theme = None)
     
     st.markdown("### Module Learning with Errors as a Lattice Problem")
 
