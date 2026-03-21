@@ -2144,6 +2144,25 @@ with tab3:
         y="Beta",
         hover_name="Time"
       )
+    
+    standards = {
+        512: "ML-KEM-512",
+        768: "ML-KEM-768", # Note: Standard is 768, changed from 756 per NIST
+        1024: "ML-KEM-1024"
+    }
+
+    for x_val, label in standards.items():
+        fig.add_vline(
+            x=x_val, 
+            line_width=2, 
+            line_dash="dash", 
+            line_color="red",
+            annotation_text=label,
+            annotation_position="top left",
+            annotation_font_size=14,
+            annotation_font_color="red",
+            annotation_textangle=-90  # Rotates the text to stand vertically
+        )
 
     # 1. Increase Axis Tick Font Size (the numbers on the scales)
     fig.update_xaxes(tickfont=dict(size=16))
@@ -2170,7 +2189,7 @@ with tab3:
         },
         xaxis_title={'text': "Lattice Dimension (n)", 'font': {'size': 20}},
         yaxis_title={'text': "Beta Parameter (β)", 'font': {'size': 20}},
-        margin=dict(l=100, r=50, t=100, b=100) # Added margin to prevent labels from cutting off
+        margin=dict(l=100, r=50, t=120, b=100) # Added margin to prevent labels from cutting off
     )
 
     col1, col2, col3 = st.columns([1,3,1])
