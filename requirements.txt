@@ -1,1 +1,6 @@
+numpy==1.26.4
+pycryptodome==3.23.0
+pyarrow==14.0.1
+pyvis==0.3.2
 streamlit==1.51.0
+plotly==5.22.0
