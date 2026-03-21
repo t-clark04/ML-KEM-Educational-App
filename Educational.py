@@ -2171,7 +2171,7 @@ with tab3:
     # 2. Increase Hovertext Size and Style
     fig.update_traces(
         marker=dict(size=12, color='blue'),
-        hovertemplate="<b>Dimension:</b> %{x}<br><b>Block size:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>",
+        hovertemplate="<b>Dimension:</b> %{x}<br><b>Block size:</b> %{y}<br><b>Runtime: %{hovertext}</b><extra></extra>",
         hoverlabel=dict(
             bgcolor="white",
             font_size=14      # This specifically changes the hover text size
