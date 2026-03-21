@@ -2180,7 +2180,6 @@ with tab3:
 
     # 3. Centering Title and Label Sizes (from previous step)
     fig.update_layout(
-        font_family = "Times New Roman",
         title={
             'text': "Breaking MLWE: Lattice Dimension, Block Size, and Runtime",
             'x': 0.5,
