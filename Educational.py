@@ -2146,12 +2146,12 @@ with tab3:
         title="How Long Would It Take to Break Module Learning with Errors?",
       )
 
-    # # Optionally, you can customize hovertemplate for more control
-    # fig.update_traces(
-    #     marker=dict(size=10, color='blue'),
-    #     hovertemplate="<b>Dimension:</b> %{x}<br><b>Beta:</b> %{y}<br><b>Time:</b> %{hovertext}<extra></extra>"
-    # )
+    # Optionally, you can customize hovertemplate for more control
+    fig.update_traces(
+        marker=dict(size=12, color='blue'),
+        hovertemplate="<b>Dimension:</b> %{x}<br><b>Beta:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>"
+    )
 
-    col1, col2, col3 = st.columns([1,2,1])
+    col1, col2, col3 = st.columns([1,3,1])
     with col2:
         st.plotly_chart(fig, use_container_width=True)
