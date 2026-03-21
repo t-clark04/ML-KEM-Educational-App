@@ -2142,15 +2142,8 @@ with tab3:
         df,
         x="Dimension",
         y="Beta",
-        hover_name="Time",   # Shows 'Time' when hovering
-        title="How Long Would It Take to Break Module Learning with Errors?",
+        hover_name="Time"
       )
-
-    # Optionally, you can customize hovertemplate for more control
-    fig.update_traces(
-        marker=dict(size=12, color='blue'),
-        hovertemplate="<b>Dimension:</b> %{x}<br><b>Block size:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>"
-    )
 
     # 1. Increase Axis Tick Font Size (the numbers on the scales)
     fig.update_xaxes(tickfont=dict(size=16))
@@ -2162,7 +2155,7 @@ with tab3:
         hovertemplate="<b>Dimension:</b> %{x}<br><b>Block size:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>",
         hoverlabel=dict(
             bgcolor="white",
-            font_size=18,       # This specifically changes the hover text size
+            font_size=14,       # This specifically changes the hover text size
             font_family="Arial"
         )
     )
@@ -2173,7 +2166,7 @@ with tab3:
             'text': "How Long Would It Take to Break Module Learning with Errors?",
             'x': 0.5,
             'xanchor': 'center',
-            'font': {'size': 24}
+            'font': {'size': 20}
         },
         xaxis_title={'text': "Lattice Dimension (n)", 'font': {'size': 20}},
         yaxis_title={'text': "Beta Parameter (β)", 'font': {'size': 20}},
