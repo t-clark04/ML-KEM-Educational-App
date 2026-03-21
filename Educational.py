@@ -2140,9 +2140,8 @@ with tab3:
     fig = px.scatter(
           x=dimension,
           y=beta,
-          hover_name="Time",   # Shows 'Time' when hovering
+          #hover_name="Time",   # Shows 'Time' when hovering
           title="How Long Would It Take to Break Module Learning with Errors?",
-          labels={"Dimension": "Lattice Dimension", "Beta": "Optimal Block Size"},
       )
 
     # # Optionally, you can customize hovertemplate for more control
