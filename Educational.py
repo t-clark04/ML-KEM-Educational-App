@@ -2127,7 +2127,7 @@ with tab3:
     )
 
     st.markdown(
-        "The interactive scatterplot below displays the optimal block size, $\\beta$, to break a MLWE instance of lattice size $n$. Hovering over a data point also shows the approximate amount of time it would take El Capitan to break it, assuming the use of the 'primal' or 'uSVP' attack. While *slightly* more advanced 'hybrid' attacks do exist to attack MLWE, these values still give the user a good idea of the sheer impregnability of this ML-KEM. As shown in the plot, under these assumptions, it would take El Capitan 12.6 **billion** years to break even the *smallest* version of ML-KEM!"
+        "The interactive scatterplot below displays the optimal block size, $\\beta$, to break a MLWE instance of lattice size $n$. Hovering over a data point also shows the approximate amount of time it would take El Capitan to break it, assuming the use of the 'primal' or 'uSVP' attack. While *slightly* more advanced 'hybrid' attacks do exist to attack MLWE, these values give the user a concept of the sheer impregnability of ML-KEM. As shown in the plot, under these assumptions, it would take El Capitan 12.6 **billion** years to break even the *smallest* version of ML-KEM!"
     )
 
     dimension = [100, 200, 300, 400, 500, 512, 600, 700, 768, 800, 900, 1000, 1024, 1100]
