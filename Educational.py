@@ -2175,7 +2175,7 @@ with tab3:
         hoverlabel=dict(
             bgcolor="white",
             font_size=14,       # This specifically changes the hover text size
-            font_family="Arial"
+            font_family="Times New Roman"
         )
     )
 
