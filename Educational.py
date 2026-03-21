@@ -2127,7 +2127,7 @@ with tab3:
     )
 
     st.markdown(
-        "The interactive scatterplot below displays the optimal block size, $\\beta$, to break a MLWE instance of lattice size $n$. Hovering over a data point also shows the approximate amount of time it would take El Capitan to break it. As shown in the plot, it would take El Capitan 12.6 **billion** years to break the even *smallest* version of ML-KEM!"
+        "The interactive scatterplot below displays the optimal block size, $\\beta$, to break a MLWE instance of lattice size $n$. Hovering over a data point also shows the approximate amount of time it would take El Capitan to break it. As shown in the plot, it would take El Capitan 12.6 **billion** years to break even the *smallest* version of ML-KEM!"
     )
 
     dimension = [100, 200, 300, 400, 500, 512, 600, 700, 768, 800, 900, 1000, 1024, 1100]
@@ -2194,3 +2194,6 @@ with tab3:
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
         st.plotly_chart(fig, use_container_width=True)
+
+    with st.expander("Where do these values come from?"):
+        st.markdown("Blah blah blah")
