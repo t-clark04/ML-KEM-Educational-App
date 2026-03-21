@@ -2188,7 +2188,7 @@ with tab3:
         },
         xaxis_title={'text': "Lattice Dimension (n)", 'font': {'size': 20}},
         yaxis_title={'text': "Beta Parameter (β)", 'font': {'size': 20}},
-        margin=dict(l=100, r=50, t=120, b=100) # Added margin to prevent labels from cutting off
+        margin=dict(l=100, r=50, t=100, b=100) # Added margin to prevent labels from cutting off
     )
 
     col1, col2, col3 = st.columns([1,3,1])
