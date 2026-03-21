@@ -2174,13 +2174,13 @@ with tab3:
         hovertemplate="<b>Dimension:</b> %{x}<br><b>Block size:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>",
         hoverlabel=dict(
             bgcolor="white",
-            font_size=14,       # This specifically changes the hover text size
-            font_family="Times New Roman"
+            font_size=14      # This specifically changes the hover text size
         )
     )
 
     # 3. Centering Title and Label Sizes (from previous step)
     fig.update_layout(
+        font_family = "Times New Roman",
         title={
             'text': "Breaking MLWE: Lattice Dimension, Block Size, and Runtime",
             'x': 0.5,
