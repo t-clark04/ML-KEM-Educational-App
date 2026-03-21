@@ -2127,7 +2127,7 @@ with tab3:
     )
 
     st.markdown(
-        "The interactive scatterplot below displays the optimal block size, $\\beta$, to break a MLWE instance of lattice size $n$. Hovering over a data point also shows the approximate amount of time it would take El Capitan to break it."
+        "The interactive scatterplot below displays the optimal block size, $\\beta$, to break a MLWE instance of lattice size $n$. Hovering over a data point also shows the approximate amount of time it would take El Capitan to break it. As shown in the plot, it would take El Capitan 12.6 **billion** years to break the even *smallest* version of ML-KEM!"
     )
 
     dimension = [100, 200, 300, 400, 500, 512, 600, 700, 768, 800, 900, 1000, 1024, 1100]
@@ -2187,7 +2187,7 @@ with tab3:
             'font': {'size': 20}
         },
         xaxis_title={'text': "Lattice Dimension (n)", 'font': {'size': 20}},
-        yaxis_title={'text': "Beta Parameter (β)", 'font': {'size': 20}},
+        yaxis_title={'text': "Optimal Block Size (β)", 'font': {'size': 20}},
         margin=dict(l=100, r=50, t=100, b=100) # Added margin to prevent labels from cutting off
     )
 
