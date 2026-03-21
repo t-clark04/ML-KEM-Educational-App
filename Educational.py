@@ -2149,8 +2149,35 @@ with tab3:
     # Optionally, you can customize hovertemplate for more control
     fig.update_traces(
         marker=dict(size=12, color='blue'),
-        hovertemplate="<b>Dimension:</b> %{x}<br><b>Beta:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>"
+        hovertemplate="<b>Dimension:</b> %{x}<br><b>Block size:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>"
     )
+
+    fig.update_layout(
+    # 1. Center the Title
+    title={
+        'text': "How Long Would It Take to Break Module Learning with Errors?",
+        'y': 0.95,       # Vertical position (0 to 1)
+        'x': 0.5,        # Horizontal position (0.5 is centered)
+        'xanchor': 'center',
+        'yanchor': 'top',
+        'font': {'size': 24} # Optional: Change title size too
+    },
+    
+    # 2. Edit X-axis Label and Size
+    xaxis_title={
+        'text': "Lattice Dimension (n)",
+        'font': {'size': 18}
+    },
+    
+    # 3. Edit Y-axis Label and Size
+    yaxis_title={
+        'text': "Beta Parameter (β)",
+        'font': {'size': 18}
+    },
+    
+    # 4. Change the size of the tick labels (the numbers on the axes)
+    font=dict(size=14) 
+    )  
 
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
