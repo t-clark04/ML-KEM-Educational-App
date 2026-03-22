@@ -2123,7 +2123,7 @@ with tab3:
     )
 
     st.markdown(
-        "While quantum algorithms (namely Shor's Algorithm) already exist which will allow attackers with quantum computers to break some of the key encryption schemes in use today, such as RSA and Diffie Hellman, there are currently **no* quantum algorithms that would be able to speed up this shortest vector attack and solve MLWE more efficiently, nor is there expected to be one anytime soon. This is what makes ML-KEM a *quantum-resistant* key encapsulation mechanism. Still, to get a sense of how difficult it would be to solve MLWE in the dimensions of ML-KEM's approved parameter sets, we can use the most powerful classical computer in the world -- El Capitan supercomputer -- as a benchmark."
+        "While quantum algorithms (namely Shor's Algorithm) already exist which will allow attackers with quantum computers to break some of the key encryption schemes in use today, such as RSA and Diffie Hellman, there are currently *no* quantum algorithms that would be able to speed up this shortest vector attack and solve MLWE in polynomial time, nor is there expected to be one anytime soon. This is what makes ML-KEM a *quantum-resistant* key encapsulation mechanism. Still, to get a sense of how difficult it would be to solve MLWE in the dimensions of ML-KEM's approved parameter sets, we can use the most powerful classical computer in the world -- El Capitan supercomputer -- as a benchmark."
     )
 
     st.markdown(
