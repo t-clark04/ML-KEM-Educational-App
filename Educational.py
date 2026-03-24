@@ -666,13 +666,6 @@ if 'h' not in st.session_state: st.session_state.h = None
 if 'z' not in st.session_state: st.session_state.z = None
 if 'ek_PKE' not in st.session_state: st.session_state.ek_PKE = None
 
-
-
-# -------------------------------------------------------------
-# *** INTEGRATION AREA: YOUR CUSTOM ML-KEM FUNCTIONS GO HERE ***
-# -------------------------------------------------------------
-# These functions now DEMONSTRATE the dependency chain by reading/writing to st.session_state
-
 def keygen_step_1(params):
     if st.session_state.rho is None:
         k = params['k']
@@ -1521,10 +1514,6 @@ def decaps_step_8(params):
         f"{returned_key}"
     )
 
-
-
-
-
 # -------------------------------------------------------------
 # --- Walkthrough Steps Definition (using the stateful functions) ---
 # -------------------------------------------------------------
@@ -1931,25 +1920,17 @@ with tab3:
 
     st.markdown("### Module Learning with Errors -- Overview")
 
-    st.markdown(
+    st.markdown("""
         "In module learning with errors (MLWE), additive/multiplicative operations take place between *modules*, which are simply vectors whose entries are polynomials in the ring $R_q[X] = \\frac{\mathbb{Z}_q[X]}{(X^N + 1)}$. Polynomials in this ring have coefficients in $\{0,1,2,...,q\}$ and are of degree at most 255 ($x^{256}$ is reduced modulo $(x^N + 1)$ to become -1). Additions and multiplications in $R_q$ take place modulo $(x^N + 1)$, as well as modulo $q$. A multiplication of this form is more properly known as a negative-wrapped convolution (or a negacyclic convolution)."
-    )
-
-    st.markdown(
+                
         "Here's the idea. Bob wants to send a message to Alice, who starts by generating some variables whose entries are elements from the ring $R_q$. She first generates $A$, which is a $k \\times k$ matrix of polynomials. Then, she generates two $k \\times 1$ vectors, $s$, and $e$, which have small coefficients modulo $q$. The variable $s$ is Alice's *secret* vector, and $e$ is her noise vector. She then calculates $As + e = t$ and sends $(A,t)$ over to Bob as her public key. It is important to note that if $t$ were *equal* to $As$, then $s$ would be very easy to solve using your favorite method for solving matrix equations (e.g. Gaussian elimination, LU decomposition, etc.). **But**, because of the added noise vector $e$, $t = As + e$ becomes very, very, very difficult to solve for $s$ since adding or multiplying rows together compounds the error!"
-    )
 
-    st.markdown(
         "Upon receiving Alice's public key, Bob takes his plaintext message and converts it to binary (a maximum of 256 bits). He leaves the 0s alone but rounds the 1s coefficients to $\\lceil \\frac{q}{2} \\rceil$, and he assigns these values to be the coefficients of a polynomial $\\mu$. He does this because it will eventually allow Alice to separate out the message from the noise. Bob then generates two vectors of polynomials with small coefficients, $y$ (known as the randomizer vector) and $e_1$ (a noise vector), as well as another random *polynomial* with small coefficients, denoted as $e_2$. After that, he calculates $u = A^Ty + e_1$ and $v = t^Ty + e_2 + \\mu$, which are the two ciphertexts that he sends over to Alice. Notice how only $v$ contains information about Bob's original plaintext message (via the polynomial $\\mu$). However, in order for Alice to uncover any information about $\\mu$, she first needs to learn information about the unknown randomizer vector $y$ -- information which can be obtained through $u$."
-    )
 
-    st.markdown(
         "Now, the only person in the world who would be able to solve for $\\mu$ given these two ciphertext variables is Alice. Why? Because she still has her secret vector $s$, of course! As shown in the visualization below, because $t = As + e$, the variable $v$ can be expanded as $s^TA^Ty + e^Ty + e_2 + \\mu$. And if Alice takes her secret vector $s$ and multiplies $s^Tu$, the result is $s^TA^Ty + s^Te_1$. Thus, when she subtracts $v - s^Tu$, the $s^TA^Ty$ terms cancel out, and she is left with $e^Ty -s^Te_1 + e_2 + \\mu$. Since $e$, $y$, $e_1$, and $e_2$ all have small coefficients, all that is left is essentially $\\mu + noise$, and because the coefficients of $\\mu$ were rounded in such a way as to allow Alice to separate out the signal from the noise, all she has to do is round! Any coefficients closer to 0 are rounded to 0, and any coefficients closer to $\\lceil \\frac{q}{2} \\rceil$ are rounded to 1. And just like that, she has recovered Bob's binary message!"
-    )
 
-    st.markdown(
         "Click the expander below for an interactive visualization of the full MLWE process:"
-    )
+    """)
 
     fig = go.Figure()
 
