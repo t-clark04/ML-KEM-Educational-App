@@ -2057,17 +2057,13 @@ with tab3:
     
     st.markdown("### Module Learning with Errors as a Lattice Problem")
 
-    st.markdown(
+    st.markdown("""
         "The best known attack on module learning with errors consists in treating it as a lattice problem. Here's the simplest and most straightforward intuition for how to think about it:"
-    )
-
-    st.markdown(
+                
         "The public key matrix, $A$, is a $k \\times k$ matrix whose entries are polynomials from the ring $R_q$. In reality, each polynomial is simply represented as the array of its coefficients, so every entry in $A$ contains an array of length $N = 256$. Therefore, although $A$ is technically of size $k \\times k$, if we were to 'flatten' the matrix to only have integer entries, it would actually be of size $kN \\times kN$. We denote this new matrix as $\\tilde{A}$ and say that $\\tilde{A} \\in \\mathbb{Z}_q^{kN \\times kN}$. We can do the same thing with Alice's secret vector, $s$, and her noise vector, $e$. So, $s \\in R_q^k$ becomes $\\tilde{s} \\in \\mathbb{Z}_q^{kN}$ and $e \\in R_q^k$ becomes $\\tilde{e} \\in \\mathbb{Z}_q^{kN}$. Just as an attacker wished to recover the secret vector $s$ in the original formulation, now they wish to recover $\\tilde{s}$ instead." 
-    )
 
-    st.markdown(
         "Now, let's imagine that we constructed a lattice from the columns of $\\tilde{A}$ (our basis vectors). We'll denote the lattice as $\\mathcal{L}(\\tilde{A})$ and say that $\\mathcal{L}(\\tilde{A}) = \\{ \\tilde{A}z : z \\in \\mathbb{Z}^{kN}\\}$. Under this formulation, every vector $z$ is a candidate 'secret vector', and the vector $\\tilde{A}\\tilde{s}$ is a point somewhere in the lattice. However, the point that the attacker knows is the public key matrix, $\\tilde{t} = \\tilde{A}\\tilde{s} + \\tilde{e}$, which is close to the desired lattice point $\\tilde{A}\\tilde{s}$ but not a lattice point itself. The problem thus becomes to find lattice vector in $\\mathcal{L}(\\tilde{A})$ that is closest to the observed vector $\\tilde{t}$. This problem is more formally known as the Closest Vector Problem (CVP) in cryptography, and a simplified two-dimensional version of it is illustrated below."
-    )
+    """)
 
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
@@ -2101,81 +2097,81 @@ with tab3:
 
     st.markdown("### Why the Attack Fails for ML-KEM")
 
-    st.markdown("As it turns out, the most effective way to solve this closest vector problem (CVP) is by converting it into a shortest vector problem (SVP) of a slightly higher lattice dimension. Whereas the CVP is based on finding the closest lattice point to a vector that is not in the lattice, the SVP relies more generally on finding the shortest vector in the lattice. Oftentimes, a short *enough* vector can solve the *approximate* shortest vector problem (aSVP), which is what the Blockwise Korkine-Zolotarev (BKZ) algorithm specializes in. The BKZ remains the gold standard for solving the aSVP, and it could, in theory, break MLWE.")
+    st.markdown("""
+        "As it turns out, the most effective way to solve this closest vector problem (CVP) is by converting it into a shortest vector problem (SVP) of a slightly higher lattice dimension. Whereas the CVP is based on finding the closest lattice point to a vector that is not in the lattice, the SVP relies more generally on finding the shortest vector in the lattice. Oftentimes, a short *enough* vector can solve the *approximate* shortest vector problem (aSVP), which is what the Blockwise Korkine-Zolotarev (BKZ) algorithm specializes in. The BKZ remains the gold standard for solving the aSVP, and it could, in theory, break MLWE."
 
-    st.markdown(
         "Without getting to far into the weeds of how the BKZ works under the hood, the algorithm calls on an SVP oracle to solve the exact shortest vector problem on a lattice of block size, $\\beta$. The larger the value of $\\beta$, the better job the algorithm does at finding the shortest vector in the lattice MLWE. However, it takes a larger number of operations, and thus, a longer amount of time to do so. Because of this accuracy-time tradeoff, for any given lattice size, there is an optimal block size for breaking the MLWE cryptosystem. We can think of it as the minimum block size that the BKZ would need to have a high probability of breaking MLWE without doing more operations than necessary."
-    )
 
-    st.markdown(
         "While quantum algorithms (namely Shor's Algorithm) already exist which will allow attackers with quantum computers to break some of the key encryption schemes in use today, such as RSA and Diffie Hellman, there are currently *no* quantum algorithms that would be able to speed up this shortest vector attack and solve MLWE in polynomial time, nor is there expected to be one anytime soon. This is what makes ML-KEM a *quantum-resistant* key encapsulation mechanism. Still, to get a sense of how difficult it would be to solve MLWE in the dimensions of ML-KEM's approved parameter sets, we can use the most powerful classical computer in the world -- El Capitan supercomputer -- as a benchmark."
-    )
-
-    st.markdown(
+ 
         "The interactive scatterplot below displays the optimal block size, $\\beta$, to break a MLWE instance of lattice size $n$. Hovering over a data point also shows the approximate amount of time it would take El Capitan to break it, assuming the use of the 'primal' or 'uSVP' attack. While *slightly* more advanced 'hybrid' attacks do exist to attack MLWE, these values still give the user a grasp of the sheer impregnability of ML-KEM. As shown in the plot, under these assumptions, it would take El Capitan 12.6 **billion** years to break even the *smallest* version of ML-KEM!"
-    )
+        """)
 
-    dimension = [100, 200, 300, 400, 500, 512, 600, 700, 768, 800, 900, 1000, 1024, 1100]
-    beta = [40, 116, 205, 298, 394, 406, 492, 591, 660, 692, 794, 897, 922, 1001]
-    time = ["2.85 femtoseconds", "13.6 nanoseconds", "0.908 seconds", "4.05 years", "1.11 billion years", "12.6 billion years", "457 quadrillion years (33 million times the age of the universe)", "230 septillion years (16.7 quadrillion times the age of the universe)", "267 nonillion years (19.4 sextillion times the age of the universe)", "174 decillion years (12.6 septillion times the age of the universe)", "16.1 tredecillion years (11.6 undecillion times the age of the universe)", "182 sexdecillion years (1.32 tredecillion times the age of the universe)", "286 septendecillion years (2.08 quattuordecillion times the age of the universe)", "252 vigintillion years (18.3 sexdecillion times the age of the universe)"]
-    df = pd.DataFrame({
-        "Dimension": dimension,
-        "Beta": beta,
-        "Time": time
-    })
-    fig = px.scatter(
-        df,
-        x="Dimension",
-        y="Beta",
-        hover_name="Time"
-      )
-    
-    standards = {
-        512: "ML-KEM-512",
-        768: "ML-KEM-768", # Note: Standard is 768, changed from 756 per NIST
-        1024: "ML-KEM-1024"
-    }
+    @st.cache_data
+    def build_attack_plot():
+        dimension = [100, 200, 300, 400, 500, 512, 600, 700, 768, 800, 900, 1000, 1024, 1100]
+        beta = [40, 116, 205, 298, 394, 406, 492, 591, 660, 692, 794, 897, 922, 1001]
+        time = ["2.85 femtoseconds", "13.6 nanoseconds", "0.908 seconds", "4.05 years", "1.11 billion years", "12.6 billion years", "457 quadrillion years (33 million times the age of the universe)", "230 septillion years (16.7 quadrillion times the age of the universe)", "267 nonillion years (19.4 sextillion times the age of the universe)", "174 decillion years (12.6 septillion times the age of the universe)", "16.1 tredecillion years (11.6 undecillion times the age of the universe)", "182 sexdecillion years (1.32 tredecillion times the age of the universe)", "286 septendecillion years (2.08 quattuordecillion times the age of the universe)", "252 vigintillion years (18.3 sexdecillion times the age of the universe)"]
+        df = pd.DataFrame({
+            "Dimension": dimension,
+            "Beta": beta,
+            "Time": time
+        })
+        fig = px.scatter(
+            df,
+            x="Dimension",
+            y="Beta",
+            hover_name="Time"
+        )
+        
+        standards = {
+            512: "ML-KEM-512",
+            768: "ML-KEM-768", # Note: Standard is 768, changed from 756 per NIST
+            1024: "ML-KEM-1024"
+        }
 
-    for x_val, label in standards.items():
-        fig.add_vline(
-            x=x_val, 
-            line_width=2, 
-            line_dash="dash", 
-            line_color="red",
-            annotation_text=label,
-            annotation_position="bottom left",
-            annotation_font_size=14,
-            annotation_font_color="red",
-            annotation_textangle=-90  # Rotates the text to stand vertically
+        for x_val, label in standards.items():
+            fig.add_vline(
+                x=x_val, 
+                line_width=2, 
+                line_dash="dash", 
+                line_color="red",
+                annotation_text=label,
+                annotation_position="bottom left",
+                annotation_font_size=14,
+                annotation_font_color="red",
+                annotation_textangle=-90  # Rotates the text to stand vertically
+            )
+
+        # 1. Increase Axis Tick Font Size (the numbers on the scales)
+        fig.update_xaxes(tickfont=dict(size=16))
+        fig.update_yaxes(tickfont=dict(size=16))
+
+        # 2. Increase Hovertext Size and Style
+        fig.update_traces(
+            marker=dict(size=12, color='blue'),
+            hovertemplate="<b>Dimension:</b> %{x}<br><b>Block size:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>",
+            hoverlabel=dict(
+                bgcolor="white",
+                font_size=14      # This specifically changes the hover text size
+            )
         )
 
-    # 1. Increase Axis Tick Font Size (the numbers on the scales)
-    fig.update_xaxes(tickfont=dict(size=16))
-    fig.update_yaxes(tickfont=dict(size=16))
-
-    # 2. Increase Hovertext Size and Style
-    fig.update_traces(
-        marker=dict(size=12, color='blue'),
-        hovertemplate="<b>Dimension:</b> %{x}<br><b>Block size:</b> %{y}<br><b>Runtime:</b> %{hovertext}<extra></extra>",
-        hoverlabel=dict(
-            bgcolor="white",
-            font_size=14      # This specifically changes the hover text size
+        # 3. Centering Title and Label Sizes (from previous step)
+        fig.update_layout(
+            title={
+                'text': "Breaking MLWE: Lattice Dimension, Block Size, and Runtime",
+                'x': 0.5,
+                'xanchor': 'center',
+                'font': {'size': 20}
+            },
+            xaxis_title={'text': "Lattice Dimension (n)", 'font': {'size': 20}},
+            yaxis_title={'text': "Optimal Block Size (β)", 'font': {'size': 20}},
+            margin=dict(l=100, r=50, t=100, b=100) # Added margin to prevent labels from cutting off
         )
-    )
+        return(fig)
 
-    # 3. Centering Title and Label Sizes (from previous step)
-    fig.update_layout(
-        title={
-            'text': "Breaking MLWE: Lattice Dimension, Block Size, and Runtime",
-            'x': 0.5,
-            'xanchor': 'center',
-            'font': {'size': 20}
-        },
-        xaxis_title={'text': "Lattice Dimension (n)", 'font': {'size': 20}},
-        yaxis_title={'text': "Optimal Block Size (β)", 'font': {'size': 20}},
-        margin=dict(l=100, r=50, t=100, b=100) # Added margin to prevent labels from cutting off
-    )
-
+    fig = build_attack_plot()
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
         st.plotly_chart(fig, width = "stretch")
