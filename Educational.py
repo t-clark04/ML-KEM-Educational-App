@@ -2183,3 +2183,32 @@ with tab3:
                 Furthermore, El Capitan has the capability of carrying out approximately $2^{60}$ operations per second. So, since we have the total number of operations it would take, as well as El Capitan's operation rate, we can divide the total # of operations by the operation rate to find the approximate amount of time that it would take (in seconds) to break MLWE. Since both values are powers of base 2, this operation can be simplified by subtracting the exponents. For a large enough time estimate, this value can be converted to years by assuming around $2^{25}$ seconds in a year and subtracting the exponent of the time estimate accordingly.
                 """
             )
+
+footer="""<style>
+a:link , a:visited{
+color: blue;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:hover,  a:active {
+color: red;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: black;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p>Built by <a style='display: block; text-align: center;' href="https://www.heflin.dev/" target="_blank">Heflin Stephen Raj S</a></p>
+</div>
+"""
+st.markdown(footer,unsafe_allow_html=True)
