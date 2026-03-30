@@ -2195,6 +2195,11 @@ footer = """
     text-align: left;
     font-size: 12px;
 }
+
+.footer p {
+    margin: 0;
+}
+
 </style>
 
 <div class="footer">
