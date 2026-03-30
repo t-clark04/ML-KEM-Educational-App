@@ -2192,7 +2192,7 @@ footer = """
     width: 100%;
     background-color: white;
     color: black;
-    text-align: center;
+    text-align: left;
 }
 </style>
 
