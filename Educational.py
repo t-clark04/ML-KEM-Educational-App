@@ -2198,7 +2198,7 @@ footer = """
 </style>
 
 <div class="footer">
-<p>Built by Thomas W. Clark and Catherine Adamo, University of Notre Dame.</p>
+<p>Developed by Thomas W. Clark and Catherine Adamo, University of Notre Dame.</p>
 </div>
 """
 st.markdown(footer, unsafe_allow_html=True)
