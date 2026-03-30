@@ -2197,7 +2197,7 @@ footer = """
 }
 
 .footer p {
-    margin: 0.025;
+    margin: 0.05;
 }
 
 </style>
