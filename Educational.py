@@ -2193,6 +2193,7 @@ footer = """
     background-color: white;
     color: black;
     text-align: left;
+    font-size: 11px;
 }
 </style>
 
