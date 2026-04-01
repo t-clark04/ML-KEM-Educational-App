@@ -2051,7 +2051,9 @@ with tab3:
 
     fig = build_mlwe_visual()
     with st.expander("**Module Learning with Errors Visualization**"):
-        st.plotly_chart(fig, width = "content", theme = None)
+        st.markdown('<div style="overflow-x: auto;">', unsafe_allow_html=True)
+        st.plotly_chart(fig, width="content", theme=None)
+        st.markdown('</div>', unsafe_allow_html=True)
     
     st.markdown("### Module Learning with Errors as a Lattice Problem")
 
