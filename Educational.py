@@ -2051,7 +2051,7 @@ with tab3:
 
     fig = build_mlwe_visual()
     with st.expander("**Module Learning with Errors Visualization**"):
-        st.plotly_chart(fig, width = "stretch", theme = None)
+        st.plotly_chart(fig, width = "content", theme = None)
     
     st.markdown("### Module Learning with Errors as a Lattice Problem")
 
