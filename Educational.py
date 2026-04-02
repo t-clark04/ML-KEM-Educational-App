@@ -13,7 +13,7 @@ from ML_KEM_graphs import draw_square, draw_rectangle, draw_rectangle_horiz, dra
 
 st.set_page_config(layout="wide", page_title="ML-KEM KeyGen Path")
 st.title("Understanding the ML-KEM Cryptosystem")
-st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the approval of three new encryption standards following an eight year process of submission and evaluation, with the *ML-KEM* cryptosystem becoming the new standard for shared key establishment.")
+st.markdown("##### In August 2024, the National Institute of Standards and Technology (NIST) announced the [approval](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) of three new encryption standards following an eight year process of submission and evaluation, with the *ML-KEM* cryptosystem becoming the new standard for shared key establishment.")
 st.markdown("###### **Why was it needed?**")
 st.markdown("""
             - Because the current encryption schemes in place around the globe were built to withstand attacks from *classical* computers, but the rise of *quantum* computers will put the security of these cryptosystems at risk.
