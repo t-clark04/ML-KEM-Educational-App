@@ -2040,13 +2040,20 @@ with tab3:
         # --- Lock aspect ratio so A is square ---
         fig.update_yaxes(scaleanchor="x", scaleratio=1)
 
-        # --- Layout size ---
+        scale = 0.8
+
         fig.update_layout(
-            width = 1600,
-            height = 2434,  
-            margin=dict(l=0, r=0, t=100, b=0),
-            autosize = False
+            width = 1600 * scale,
+            height = 2434 * scale,
+            font=dict(size=14 * scale)
         )
+        # --- Layout size ---
+        # fig.update_layout(
+        #     width = 1600,
+        #     height = 2434,  
+        #     margin=dict(l=0, r=0, t=100, b=0),
+        #     autosize = False
+        # )
         return(fig)
 
     fig = build_mlwe_visual()
