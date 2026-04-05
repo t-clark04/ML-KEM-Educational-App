@@ -2040,12 +2040,12 @@ with tab3:
         # --- Lock aspect ratio so A is square ---
         fig.update_yaxes(scaleanchor="x", scaleratio=1)
 
-        scale = 0.85
+        scale = 0.7
 
         fig.update_layout(
             width = 1600 * scale,
-            height = 2434 * scale,
-            font=dict(size=14 * scale)
+            height = 2434 * scale
+   #         font=dict(size=14 * scale)
         )
         # --- Layout size ---
         # fig.update_layout(
