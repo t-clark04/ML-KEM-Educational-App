@@ -12,14 +12,14 @@ def draw_square(fig, x0, y0, size, mid_label, upper_label, color, hovertext = ""
     x=x0 + size/2, y=y0 + size/2,
     text=f"<b>{mid_label}</b>",
     showarrow=False,
-    font=dict(size=24)
+    font=dict(size=22)
     )
     
     fig.add_annotation(
     x=x0 + size/2, y=y0 + size + 0.2,
     text=f"{upper_label}",
     showarrow=False,
-    font=dict(size=16),
+    font=dict(size=14),
     xanchor="center",
     yanchor="bottom"
     )
@@ -33,7 +33,7 @@ def draw_square(fig, x0, y0, size, mid_label, upper_label, color, hovertext = ""
     x=x0 + size/2, y=y0 - 0.2,
     text = text,
     showarrow=False,
-    font=dict(size=16),
+    font=dict(size=14),
     xanchor="center",
     yanchor="top"
     )
@@ -64,14 +64,14 @@ def draw_rectangle(fig, x0, y0, size, mid_label, upper_label, color, hovertext =
     x=x0 + 0.5, y=y0 + size/2,
     text=f"<b>{mid_label}</b>",
     showarrow=False,
-    font=dict(size=24)
+    font=dict(size=22)
     )
     
     fig.add_annotation(
     x=x0 + 0.5, y=y0 + size + 0.2,
     text=f"{upper_label}",
     showarrow=False,
-    font=dict(size=16),
+    font=dict(size=14),
     xanchor="center",
     yanchor="bottom"
     )
@@ -80,7 +80,7 @@ def draw_rectangle(fig, x0, y0, size, mid_label, upper_label, color, hovertext =
     x=x0 + 0.5, y=y0 - 0.2,
     text=f"k × 1",
     showarrow=False,
-    font=dict(size=16),
+    font=dict(size=14),
     xanchor="center",
     yanchor="top"
     )
@@ -110,14 +110,14 @@ def draw_rectangle_horiz(fig, x0, y0, size, mid_label, upper_label, color, hover
     x=x0 + size/2, y=y0 + 0.5,
     text=f"<b>{mid_label}</b>",
     showarrow=False,
-    font=dict(size=24)
+    font=dict(size=22)
     )
     
     fig.add_annotation(
     x=x0 + size/2, y=y0 + 1.2,
     text=f"{upper_label}",
     showarrow=False,
-    font=dict(size=16),
+    font=dict(size=14),
     xanchor="center",
     yanchor="bottom"
     )
@@ -126,7 +126,7 @@ def draw_rectangle_horiz(fig, x0, y0, size, mid_label, upper_label, color, hover
     x=x0 + size/2, y=y0 - 0.2,
     text=f"1 × k",
     showarrow=False,
-    font=dict(size=16),
+    font=dict(size=14),
     xanchor="center",
     yanchor="top"
     )
@@ -149,7 +149,7 @@ def draw_plus(fig, x,y):
         x=x, y=y,
         text="+",
         showarrow=False,
-        font=dict(size=28),
+        font=dict(size=26),
         xanchor="center",
         yanchor="middle"
     )
@@ -159,7 +159,7 @@ def draw_minus(fig, x,y):
         x=x, y=y,
         text="-",
         showarrow=False,
-        font=dict(size=28),
+        font=dict(size=26),
         xanchor="center",
         yanchor="middle"
     )
@@ -169,7 +169,7 @@ def draw_equals(fig, x,y):
         x=x, y=y,
         text="=",
         showarrow=False,
-        font=dict(size=28),
+        font=dict(size=26),
         xanchor="center",
         yanchor="middle"
     )
@@ -192,7 +192,7 @@ def draw_arrow(fig, xhead, xtail, y, label):
         x=(xhead + xtail)/2, y=y + 0.25,           # midpoint of the arrow, slightly above
         text=f"<b>{label}</b>",
         showarrow=False,
-        font=dict(size=16),
+        font=dict(size=14),
         xanchor="center"
     )
 
@@ -201,7 +201,7 @@ def add_header(fig, x,y,label):
     x=x, y=y,          # above A block
     text=f"<b><u>{label}</u></b>",
     showarrow=False,
-    font=dict(size=22, color="black"),
+    font=dict(size=20, color="black"),
     xanchor="center",
     yanchor="bottom"
     )
@@ -221,7 +221,7 @@ def draw_approx(fig, x,y):
         x=x, y=y,
         text="≈",
         showarrow=False,
-        font=dict(size=28),
+        font=dict(size=26),
         xanchor="center",
         yanchor="middle"
     )
