@@ -211,7 +211,7 @@ def add_subheader(fig, x,y,label):
     x=x, y=y,          # sublabel just below "Alice"
     text=f"<u>{label}</u>",
     showarrow=False,
-    font=dict(size=16, color="black"),
+    font=dict(size=18, color="black"),
     xanchor="center",
     yanchor="bottom"
     )
