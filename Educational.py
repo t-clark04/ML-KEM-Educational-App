@@ -2211,7 +2211,7 @@ footer = """
 </style>
 
 <div class="footer">
-<p>Developed by Thomas W. Clark and Catherine Adamo, University of Notre Dame.</p>
+<p>Developed by Thomas W. Clark and Catherine Adamo, University of Notre Dame. Last Updated: 04/08/2026.</p>
 </div>
 """
 st.markdown(footer, unsafe_allow_html=True)
